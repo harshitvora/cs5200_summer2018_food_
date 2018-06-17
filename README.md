@@ -1,1 +1,1 @@
-# cs5200_summer2018_food_husky
+# cs5200_summer2018_husky_eats
