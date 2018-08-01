@@ -1,9 +1,15 @@
-package edu.neu.cs5200.model;
+package edu.neu.cs5200.entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
-    private int personId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String firstName;
     private String lastName;
     private String username;
@@ -11,12 +17,12 @@ public abstract class Person {
     private String email;
     private Date dob;
 
-    public int getPersonId() {
-        return personId;
+    public int getId() {
+        return id;
     }
 
-    public void setPersonId(int personId) {
-        this.personId = personId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

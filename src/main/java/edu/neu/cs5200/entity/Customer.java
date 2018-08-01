@@ -1,30 +1,19 @@
-package edu.neu.cs5200.model;
+package edu.neu.cs5200.entity;
 
-import java.sql.Date;
+import javax.persistence.*;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class Customer extends Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String preferredLocation;
     private String ccNumber;
     private String cvv;
     private int expiryMM;
     private int expiryYY;
-
-    public Customer(int id, String firstName, String lastName, String username, String password, String email, Date dob, String preferredLocation, String ccNumber, String cvv, int expiryMM, int expiryYY, int personId) {
-        this.id = id;
-        setFirstName(firstName);
-        setLastName(lastName);
-        setUsername(username);
-        setPassword(password);
-        setEmail(email);
-        setDob(dob);
-        setPersonId(personId);
-        this.preferredLocation = preferredLocation;
-        this.ccNumber = ccNumber;
-        this.cvv = cvv;
-        this.expiryMM = expiryMM;
-        this.expiryYY = expiryYY;
-    }
 
     public int getId() {
         return id;
@@ -72,5 +61,9 @@ public class Customer extends Person {
 
     public void setExpiryYY(int expiryYY) {
         this.expiryYY = expiryYY;
+    }
+
+    public void set(Customer newCustomer){
+
     }
 }

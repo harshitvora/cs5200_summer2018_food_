@@ -1,4 +1,4 @@
-package edu.neu.cs5200.model;
+package edu.neu.cs5200.entity;
 
 public class Phone {
     private String phoneNumber;

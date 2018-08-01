@@ -1,5 +1,8 @@
-package edu.neu.cs5200.model;
+package edu.neu.cs5200.entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Address {
     private String street1;
     private String street2;

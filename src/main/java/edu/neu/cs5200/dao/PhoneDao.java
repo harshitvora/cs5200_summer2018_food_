@@ -1,6 +1,6 @@
 package edu.neu.cs5200.dao;
 
-import edu.neu.cs5200.model.Phone;
+import edu.neu.cs5200.entity.Phone;
 
 import java.sql.*;
 import java.util.ArrayList;
