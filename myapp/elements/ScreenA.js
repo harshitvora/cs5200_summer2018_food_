@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, ScrollView } from 'react-native';
 import {Text} from 'react-native-elements';
 
 class ScreenA extends Component {
@@ -13,9 +13,10 @@ class ScreenA extends Component {
 
     render() {
         return(
-            <View style={{padding: 15}}>
+            <ScrollView style={{padding: 15}}>
                 <Text h3>Screen A</Text>
-            </View>
+                <Button title="Go Home" onPress={() => this.props.navigation.goBack()}/>
+            </ScrollView>
         )
     }
 }
