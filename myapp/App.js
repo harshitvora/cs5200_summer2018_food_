@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import { StyleSheet, ScrollView, Dimensions, Button } from 'react-native';
+import { StyleSheet, ScrollView, Dimensions, Button, Text } from 'react-native';
 import { Container, View, Content } from 'native-base';
 import {createStackNavigator, StackNavigator} from 'react-navigation';
 import HuskyEatsInfo from './elements/HuskyEatsInfo';
-import ScreenA from './elements/ScreenA';
-import ScreenB from './elements/ScreenB';
-import SignIn from './elements/SignIn';
-import SignUp from './elements/SignUp';
-import SignInSignUpSegment from './elements/SignInSignUpSegment';
 import GreetingPage from './elements/GreetingPage';
 import GreetingCarousel from './elements/GreetingCarousel';
+import SignIn from './elements/SignIn';
+import SignUp from './elements/SignUp';
+import AddressForm from './elements/AddressForm';
 import { Constants } from 'expo';
 
 const { width } = Dimensions.get('window');
@@ -20,7 +18,9 @@ class Home extends Component {
         const params = navigation.state.params || {};
 
         return {
-            headerTitle: 'HuskyEats',
+            headerTitle: (
+                <Text style={{color: '#fff', fontSize: 20, fontWeight: 'bold'}}>HuskyEats</Text>
+            ),
             headerLeft: (
                 <Button
                     onPress={() => navigation.navigate('HuskyEatsInfo')}
@@ -70,14 +70,8 @@ class Home extends Component {
                         <View style={styles.container}>
                             <GreetingCarousel images={images}/>
                         </View>
-                        {/*<SignInSignUpSegment/>*/}
                         {/*<StatusBar barStyle="light-content"/>*/}
                         {/*<FixedHeader/>*/}
-                        {/*<AddressForm/>*/}
-                        {/*<Button title="Go to Screen A" onPress={() => this.props.navigation.navigate('ScreenA')}/>*/}
-                        {/*<Button title="Go to Screen B" onPress={() => this.props.navigation.navigate('ScreenB')}/>*/}
-                        {/*<Button title="Sign In" onPress={() => this.props.navigation.navigate('SignIn')}/>*/}
-                        {/*<Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUp')}/>*/}
                     </ScrollView>
                 </Content>
             </Container>
@@ -86,7 +80,7 @@ class Home extends Component {
 
 const MainStack = createStackNavigator(
     {
-        Home, GreetingPage, ScreenA, ScreenB, SignIn, SignUp, SignInSignUpSegment
+        Home, SignIn, SignUp, AddressForm
     },
     {
         initialRouteName: 'Home',

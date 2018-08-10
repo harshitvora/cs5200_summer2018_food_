@@ -1,99 +1,124 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
-import { Container, Header, Content, Form, Item, Input, Label, Button } from 'native-base';
+import { Container, Content, Button, Icon, Segment, Text } from 'native-base';
+import AddressForm from "./AddressForm";
+
+class HeaderSegment extends React.Component {
+    render() {
+        this.state = {
+            seg: 1
+        }
+        return (
+            <Segment style={{backgroundColor: '#f23151'}}>
+                <Button
+                    first
+                    style={{
+                        backgroundColor: this.state.seg === 1 ? '#eee' : '#f23151',
+                        borderColor: '#eee',
+                    }}
+                    active={this.state.seg === 1 ? true : false}
+                    onPress={() => this.setState({ seg: 1 })}
+                ><Text style={{color: this.state.seg === 1 ? '#f23151' : '#eee'}}>Sign Up</Text>
+                </Button>
+                <Button
+                    last
+                    style={{
+                        backgroundColor: this.state.seg === 2 ? '#eee' : '#f23151',
+                        borderColor: '#eee',
+                    }}
+                    active={this.state.seg === 2 ? true : false}
+                    onPress={() => this.setState({ seg: 2 })}
+                ><Text style={{color: this.state.seg === 1 ? '#eee' : '#f23151'}}>Sign In</Text>
+                </Button>
+            </Segment>
+        );
+    }
+}
 
 export default class SignUp extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            password: ''
+        }
+    }
+
+    static navigationOptions = ({ navigation }) => {
+        const { params } = navigation.state;
+
+        return {
+            headerTitle: (
+                <HeaderSegment/>
+            ),
+            headerRight: (
+                <Button
+                    transparent
+                    onPress={() => this.props.navigation.navigate('AddressForm')}
+                >
+                    <Text style={{color: '#fff'}}>Skip</Text>
+                </Button>
+            ),
+        };
+    };
+
+    updateForm(newState) {
+        this.setState(newState)
     }
 
     render() {
         return(
-            <View style={styles.container}>
-                <View style={styles.loginSquare}>
-                    <View style={styles.loginHeader}>
-                        <Text style={styles.loginText}>Login</Text>
+            <Container>
+                <Content>
+                    <FormLabel>First Name</FormLabel>
+                    <FormInput onChangeText={text => this.updateForm({firstName: text})}/>
+                    <FormLabel>Last Name</FormLabel>
+                    <FormInput onChangeText={text => this.updateForm({lastName: text})}/>
+                    <FormLabel>Email</FormLabel>
+                    <FormInput onChangeText={text => this.updateForm({email: text})}/>
+                    <FormLabel>Phone</FormLabel>
+                    <FormInput onChangeText={text => this.updateForm({phone: text})}/>
+                    <FormLabel>Password</FormLabel>
+                    <FormInput secureTextEntry={true} onChangeText={text => this.updateForm({password: text})}/>
+                    <View style={styles.container}>
+                        <View style={styles.loginButton}>
+                            <Button block style={{backgroundColor: '#f23151'}}>
+                                <Text style={{color: '#FFFFFF'}}>Sign Up</Text>
+                            </Button>
+                        </View>
+                        <View style={{
+                            width: '90%',
+                            margin: 10,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Text style={{color: '#616161'}}>By tapping Sign Up, you agree to our
+                                <Text style={{color: '#208e8e', textDecorationLine: 'underline'}}> Terms and Conditions</Text> and
+                                <Text style={{color: '#208e8e', textDecorationLine: 'underline'}}> Privacy Statement.</Text>
+                            </Text>
+                        </View>
                     </View>
-                    <View style={styles.loginFirstName}>
-                        <TextInput style={styles.inputText} placeholder="First Name"/>
-                    </View>
-                    <View style={styles.loginForm}>
-                        <TextInput style={styles.inputText} placeholder="Last Name"/>
-                    </View>
-                    <View style={styles.loginForm}>
-                        <TextInput style={styles.inputText} placeholder="Email"/>
-                    </View>
-                    <View style={styles.loginForm}>
-                        <TextInput style={styles.inputText} placeholder="Phone"/>
-                    </View>
-                    <View style={styles.loginPassword}>
-                        <TextInput style={styles.inputText} placeholder="Password"/>
-                    </View>
-                    <View style={styles.loginButton}>
-                        <Button block style={{backgroundColor: '#f23151'}}>
-                            <Text style={styles.loginText}>Sign Up</Text>
-                        </Button>
-                    </View>
-                </View>
-            </View>
+                </Content>
+            </Container>
         )
     }
 }
 
 const styles = {
     container: {
-        width: '100%',
-        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',
     },
-    loginSquare: {
-        backgroundColor: '#FFFFFF',
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
-    },
-    loginHeader: {
-        backgroundColor: '#f23151',
-        width: '100%',
-        height: 75,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    loginText: {
-        color: '#FFFFFF'
-    },
-    loginFirstName: {
-        width: '100%',
-        height: 50,
-        marginTop: 5,
-        borderColor: 'gray'
-    },
-    loginForm: {
-        width: '100%',
-        height: 50,
-        borderColor: 'gray'
-    },
-    loginPassword: {
-        width: '100%',
-        height: 50,
-        marginBottom: 5,
-        borderColor: 'gray'
-    },
     loginButton: {
         width: '80%',
+        margin: 10,
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    inputText: {
-        borderWidth: 2,  // size/width of the border
-        borderColor: 'lightgrey',  // color of the border
-        paddingLeft: 10,
-        height: 50
     }
 }
