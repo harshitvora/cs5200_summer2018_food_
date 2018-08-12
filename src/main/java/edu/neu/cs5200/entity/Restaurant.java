@@ -1,9 +1,7 @@
 package edu.neu.cs5200.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Restaurant {
@@ -14,6 +12,8 @@ public class Restaurant {
     private String name;
     private String url;
     private String email;
+    @OneToMany(mappedBy = "restaurant")
+    private List<Review> reviews;
 
     public int getId() {
         return id;
@@ -47,9 +47,18 @@ public class Restaurant {
         this.email = email;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     public void set(Restaurant newRestaurant){
         setName(newRestaurant.getName());
         setUrl(newRestaurant.getUrl());
         setEmail(newRestaurant.getEmail());
+        setReviews(newRestaurant.getReviews());
     }
 }

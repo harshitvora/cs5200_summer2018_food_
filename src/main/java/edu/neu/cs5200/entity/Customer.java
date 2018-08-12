@@ -2,6 +2,7 @@ package edu.neu.cs5200.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
@@ -15,6 +16,8 @@ public class Customer extends Person {
     private String cvv;
     private int expiryMM;
     private int expiryYY;
+    @OneToMany(mappedBy = "customer")
+    private List<Review> reviews;
 
     public int getId() {
         return id;
@@ -64,6 +67,14 @@ public class Customer extends Person {
         this.expiryYY = expiryYY;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     public void set(Customer newCustomer){
         setFirstName(newCustomer.getFirstName());
         setLastName(newCustomer.getLastName());
@@ -72,5 +83,6 @@ public class Customer extends Person {
         setEmail(newCustomer.getEmail());
         setDob(newCustomer.getDob());
         setPreferredLocation(newCustomer.getPreferredLocation());
+        setReviews(newCustomer.getReviews());
     }
 }
