@@ -1,24 +1,32 @@
 package edu.neu.cs5200.entity;
 
-import javax.persistence.Entity;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 
 @Entity
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String street1;
     private String street2;
     private String city;
     private String state;
     private String zip;
-    private boolean primary;
-    private int personId;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean primaryAddress;
 
-    public Address(String street1, String street2, String city, String state, String zip, boolean primary, int personId) {
-        this.street1 = street1;
-        this.street2 = street2;
-        this.city = city;
-        this.zip = zip;
-        this.primary = primary;
-        this.personId = personId;
+    @ManyToOne
+    private Person person;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStreet1() {
@@ -61,19 +69,13 @@ public class Address {
         this.zip = zip;
     }
 
-    public boolean isPrimary() {
-        return primary;
+    public boolean isPrimaryAddress() {
+        return primaryAddress;
     }
 
-    public void setPrimary(boolean primary) {
-        this.primary = primary;
+    public void setPrimaryAddress(boolean primaryAddress) {
+        this.primaryAddress = primaryAddress;
     }
 
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
+    public void set(Address newAddress){}
 }

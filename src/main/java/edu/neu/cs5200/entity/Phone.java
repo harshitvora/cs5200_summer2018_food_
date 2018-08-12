@@ -1,14 +1,27 @@
 package edu.neu.cs5200.entity;
 
-public class Phone {
-    private String phoneNumber;
-    private boolean primary;
-    private int personId;
+import org.hibernate.annotations.Type;
 
-    public Phone(String phoneNumber, boolean primary, int personId) {
-        this.phoneNumber = phoneNumber;
-        this.primary = primary;
-        this.personId = personId;
+import javax.persistence.*;
+
+@Entity
+public class Phone {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String phoneNumber;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean primaryPhone;
+    @ManyToOne
+    private Person person;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPhoneNumber() {
@@ -19,19 +32,13 @@ public class Phone {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isPrimary() {
-        return primary;
+    public boolean isPrimaryPhone() {
+        return primaryPhone;
     }
 
-    public void setPrimary(boolean primary) {
-        this.primary = primary;
+    public void setPrimaryPhone(boolean primaryPhone) {
+        this.primaryPhone = primaryPhone;
     }
 
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
+    public void set(Phone newPhone){}
 }

@@ -1,7 +1,11 @@
 package edu.neu.cs5200.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -16,6 +20,13 @@ public abstract class Person {
     private String password;
     private String email;
     private Date dob;
+
+    @OneToMany(mappedBy = "person")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Phone> phones;
+    @OneToMany(mappedBy = "person")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Address> addresses;
 
     public int getId() {
         return id;
@@ -71,5 +82,21 @@ public abstract class Person {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

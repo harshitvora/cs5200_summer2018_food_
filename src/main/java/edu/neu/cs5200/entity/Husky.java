@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class DeliveryStaff extends Person {
+public class Husky extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class DeliveryStaff extends Person {
         this.id = id;
     }
 
-    public void set(DeliveryStaff newDeliveryStaff){
+    public void set(Husky newHusky){
 
     }
 }
