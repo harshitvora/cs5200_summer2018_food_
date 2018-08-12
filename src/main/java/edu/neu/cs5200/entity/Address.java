@@ -77,5 +77,20 @@ public class Address {
         this.primaryAddress = primaryAddress;
     }
 
-    public void set(Address newAddress){}
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void set(Address newAddress){
+        setStreet1(newAddress.getStreet1());
+        setStreet2(newAddress.getStreet2());
+        setCity(newAddress.getCity());
+        setState(newAddress.getState());
+        setZip(newAddress.getZip());
+        setPrimaryAddress(newAddress.isPrimaryAddress());
+    }
 }

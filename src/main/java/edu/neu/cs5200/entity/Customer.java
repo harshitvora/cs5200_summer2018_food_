@@ -1,6 +1,7 @@
 package edu.neu.cs5200.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
@@ -64,6 +65,12 @@ public class Customer extends Person {
     }
 
     public void set(Customer newCustomer){
-
+        setFirstName(newCustomer.getFirstName());
+        setLastName(newCustomer.getLastName());
+        setUsername(newCustomer.getUsername());
+        setPassword(newCustomer.getPassword());
+        setEmail(newCustomer.getEmail());
+        setDob(newCustomer.getDob());
+        setPreferredLocation(newCustomer.getPreferredLocation());
     }
 }

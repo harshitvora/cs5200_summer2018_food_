@@ -24,9 +24,14 @@ public abstract class Person {
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Phone> phones;
+
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Address> addresses;
+
+    @OneToMany(mappedBy = "person")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<CreditCard> creditCards;
 
     public int getId() {
         return id;
@@ -98,5 +103,13 @@ public abstract class Person {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(List<CreditCard> creditCards) {
+        this.creditCards = creditCards;
     }
 }

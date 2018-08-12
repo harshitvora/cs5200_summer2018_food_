@@ -40,5 +40,16 @@ public class Phone {
         this.primaryPhone = primaryPhone;
     }
 
-    public void set(Phone newPhone){}
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public void set(Phone newPhone){
+        setPhoneNumber(newPhone.getPhoneNumber());
+        setPrimaryPhone(newPhone.isPrimaryPhone());
+    }
 }
