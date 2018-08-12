@@ -1,17 +1,19 @@
 package edu.neu.cs5200.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Restaurant {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String url;
     private String email;
-
-    public Restaurant(int id, String name, String url, String email) {
-        this.id = id;
-        this.name = name;
-        this.url = url;
-        this.email = email;
-    }
 
     public int getId() {
         return id;
@@ -43,5 +45,11 @@ public class Restaurant {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void set(Restaurant newRestaurant){
+        setName(newRestaurant.getName());
+        setUrl(newRestaurant.getUrl());
+        setEmail(newRestaurant.getEmail());
     }
 }
