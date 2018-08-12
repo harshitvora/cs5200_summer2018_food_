@@ -14,6 +14,10 @@ public class Restaurant {
     private String email;
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews;
+    @OneToMany(mappedBy = "restaurant")
+    private List<HuskyOrder> huskyOrders;
+    @OneToMany(mappedBy = "restaurant")
+    private List<Item> items;
 
     public int getId() {
         return id;
@@ -55,10 +59,28 @@ public class Restaurant {
         this.reviews = reviews;
     }
 
+    public List<HuskyOrder> getHuskyOrders() {
+        return huskyOrders;
+    }
+
+    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
+        this.huskyOrders = huskyOrders;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public void set(Restaurant newRestaurant){
         setName(newRestaurant.getName());
         setUrl(newRestaurant.getUrl());
         setEmail(newRestaurant.getEmail());
         setReviews(newRestaurant.getReviews());
+        setHuskyOrders(newRestaurant.getHuskyOrders());
+        setItems(newRestaurant.getItems());
     }
 }

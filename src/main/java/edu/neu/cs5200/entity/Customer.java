@@ -1,7 +1,6 @@
 package edu.neu.cs5200.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -18,6 +17,8 @@ public class Customer extends Person {
     private int expiryYY;
     @OneToMany(mappedBy = "customer")
     private List<Review> reviews;
+    @OneToMany(mappedBy = "customer")
+    private List<HuskyOrder> huskyOrders;
 
     public int getId() {
         return id;
@@ -75,7 +76,15 @@ public class Customer extends Person {
         this.reviews = reviews;
     }
 
-    public void set(Customer newCustomer){
+    public List<HuskyOrder> getHuskyOrders() {
+        return huskyOrders;
+    }
+
+    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
+        this.huskyOrders = huskyOrders;
+    }
+
+    public void set(Customer newCustomer) {
         setFirstName(newCustomer.getFirstName());
         setLastName(newCustomer.getLastName());
         setUsername(newCustomer.getUsername());
@@ -84,5 +93,6 @@ public class Customer extends Person {
         setDob(newCustomer.getDob());
         setPreferredLocation(newCustomer.getPreferredLocation());
         setReviews(newCustomer.getReviews());
+        setHuskyOrders(newCustomer.getHuskyOrders());
     }
 }
