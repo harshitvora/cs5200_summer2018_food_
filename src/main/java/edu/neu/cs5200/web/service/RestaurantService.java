@@ -21,7 +21,14 @@ public class RestaurantService {
 
     @GetMapping("/api/restaurant/{restaurantId}")
     public Optional<Restaurant> findRestaurantById(@PathVariable("restaurantId") int id) {
-        return restaurantDao.findRestaurantById(id);
+        Optional<Restaurant> restaurant = restaurantDao.findRestaurantById(id);
+        if(!restaurant.isPresent()){
+            // do external api call and save to local db
+            Restaurant newRestaurant = new Restaurant();
+            restaurantDao.createRestaurant(newRestaurant);
+            restaurant = Optional.of(newRestaurant);
+        }
+        return restaurant;
     }
 
     @PostMapping("/api/restaurant")

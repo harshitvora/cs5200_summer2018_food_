@@ -10,6 +10,7 @@ public class HuskyOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private float amount;
+    private String status;
     @ManyToOne
     private Customer customer;
     @ManyToOne
@@ -36,6 +37,14 @@ public class HuskyOrder {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Customer getCustomer() {
@@ -72,6 +81,7 @@ public class HuskyOrder {
 
     public void set(HuskyOrder newHuskyOrder){
         setAmount(newHuskyOrder.getAmount());
+        setStatus(newHuskyOrder.getStatus());
         setCustomer(newHuskyOrder.getCustomer());
         setHusky(newHuskyOrder.getHusky());
         setRestaurant(newHuskyOrder.getRestaurant());
