@@ -18,11 +18,11 @@ public class AddressDao {
         return addressRepository.save(address);
     }
 
-    public Address updateAddress(int id, Address newAdress) {
+    public Address updateAddress(int id, Address newAddress) {
         Optional<Address> optional = addressRepository.findById(id);
         if (optional.isPresent()) {
             Address address = optional.get();
-            address.set(newAdress);
+            address.set(newAddress);
             return addressRepository.save(address);
         }
         return null;

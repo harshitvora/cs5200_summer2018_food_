@@ -11,7 +11,7 @@ public class Item {
     private String name;
     private float price;
     @ManyToOne
-    private Restaurant restaurant;
+    private Menu menu;
 
     public int getId() {
         return id;
@@ -37,17 +37,17 @@ public class Item {
         this.price = price;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public void set(Item newItem){
         setName(newItem.getName());
         setPrice(newItem.getPrice());
-        setRestaurant(newItem.getRestaurant());
+        setMenu(newItem.getMenu());
     }
 }

@@ -1,4 +1,55 @@
 package edu.neu.cs5200.entity;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Menu {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    @ManyToOne
+    private Restaurant restaurant;
+    @OneToMany(mappedBy = "menu")
+    private List<Item> items;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void set(Menu newMenu){
+        setName(newMenu.getName());
+        setRestaurant(newMenu.getRestaurant());
+        setItems(newMenu.getItems());
+    }
 }

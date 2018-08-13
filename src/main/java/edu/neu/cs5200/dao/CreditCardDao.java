@@ -18,11 +18,11 @@ public class CreditCardDao {
         return creditCardRepository.save(creditCard);
     }
 
-    public CreditCard updateCreditCard(int id, CreditCard newAdress) {
+    public CreditCard updateCreditCard(int id, CreditCard newCreditCard) {
         Optional<CreditCard> optional = creditCardRepository.findById(id);
         if (optional.isPresent()) {
             CreditCard creditCard = optional.get();
-            creditCard.set(newAdress);
+            creditCard.set(newCreditCard);
             return creditCardRepository.save(creditCard);
         }
         return null;

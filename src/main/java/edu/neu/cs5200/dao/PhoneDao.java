@@ -18,11 +18,11 @@ public class PhoneDao {
         return phoneRepository.save(phone);
     }
 
-    public Phone updatePhone(int id, Phone newAdress) {
+    public Phone updatePhone(int id, Phone newPhone) {
         Optional<Phone> optional = phoneRepository.findById(id);
         if (optional.isPresent()) {
             Phone phone = optional.get();
-            phone.set(newAdress);
+            phone.set(newPhone);
             return phoneRepository.save(phone);
         }
         return null;

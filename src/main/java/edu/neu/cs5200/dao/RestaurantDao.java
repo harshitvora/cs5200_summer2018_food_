@@ -18,11 +18,11 @@ public class RestaurantDao {
         return restaurantRepository.save(restaurant);
     }
 
-    public Restaurant updateRestaurant(int id, Restaurant newAdress) {
+    public Restaurant updateRestaurant(int id, Restaurant newRestaurant) {
         Optional<Restaurant> optional = restaurantRepository.findById(id);
         if (optional.isPresent()) {
             Restaurant restaurant = optional.get();
-            restaurant.set(newAdress);
+            restaurant.set(newRestaurant);
             return restaurantRepository.save(restaurant);
         }
         return null;

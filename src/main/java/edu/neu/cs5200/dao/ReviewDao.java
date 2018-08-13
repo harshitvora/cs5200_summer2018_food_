@@ -18,11 +18,11 @@ public class ReviewDao {
         return reviewRepository.save(review);
     }
 
-    public Review updateReview(int id, Review newAdress) {
+    public Review updateReview(int id, Review newReview) {
         Optional<Review> optional = reviewRepository.findById(id);
         if (optional.isPresent()) {
             Review review = optional.get();
-            review.set(newAdress);
+            review.set(newReview);
             return reviewRepository.save(review);
         }
         return null;

@@ -17,7 +17,7 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<HuskyOrder> huskyOrders;
     @OneToMany(mappedBy = "restaurant")
-    private List<Item> items;
+    private List<Menu> menus;
 
     public int getId() {
         return id;
@@ -67,12 +67,12 @@ public class Restaurant {
         this.huskyOrders = huskyOrders;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Menu> getMenus() {
+        return menus;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     public void set(Restaurant newRestaurant){
@@ -81,6 +81,6 @@ public class Restaurant {
         setEmail(newRestaurant.getEmail());
         setReviews(newRestaurant.getReviews());
         setHuskyOrders(newRestaurant.getHuskyOrders());
-        setItems(newRestaurant.getItems());
+        setMenus(newRestaurant.getMenus());
     }
 }
