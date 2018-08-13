@@ -1,34 +1,38 @@
 import React, {Component} from 'react';
-import { View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import { Container, Content, Button, Icon, Segment, Text } from 'native-base';
+import SignUp from './SignUp';
 
 class HeaderSegment extends React.Component {
+
     render() {
         this.state = {
             seg: 2
-        }
+        };
         return (
-            <Segment style={{backgroundColor: '#f23151'}}>
+            <Segment style={{backgroundColor: '#fff'}}>
                 <Button
                     first
+                    title="SignUp"
                     style={{
-                        backgroundColor: this.state.seg === 1 ? '#eee' : '#f23151',
-                        borderColor: '#eee',
+                        backgroundColor: this.state.seg === 1 ? '#f23151' : '#fff',
+                        borderColor: '#f23151',
                     }}
-                    active={this.state.seg === 1 ? true : false}
+                    active={this.state.seg === 1}
                     onPress={() => this.setState({ seg: 1 })}
-                ><Text style={{color: this.state.seg === 1 ? '#f23151' : '#eee'}}>Sign Up</Text>
+                ><Text style={{color: this.state.seg === 1 ? '#fff' : '#f23151'}}>Sign Up</Text>
                 </Button>
                 <Button
                     last
+                    title="SignIn"
                     style={{
-                        backgroundColor: this.state.seg === 2 ? '#eee' : '#f23151',
-                        borderColor: '#eee',
+                        backgroundColor: this.state.seg === 2 ? '#f23151' : '#fff',
+                        borderColor: '#f23151',
                     }}
-                    active={this.state.seg === 2 ? true : false}
+                    active={this.state.seg === 2}
                     onPress={() => this.setState({ seg: 2 })}
-                ><Text style={{color: this.state.seg === 1 ? '#eee' : '#f23151'}}>Sign In</Text>
+                ><Text style={{color: this.state.seg === 1 ? '#f23151' : '#fff'}}>Sign In</Text>
                 </Button>
             </Segment>
         );
@@ -38,10 +42,10 @@ class HeaderSegment extends React.Component {
 export default class SignIn extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
         }
     }
 
@@ -69,7 +73,10 @@ export default class SignIn extends Component {
                     <FormInput secureTextEntry={true} onChangeText={text => this.updateForm({password: text})}/>
                     <View style={styles.container}>
                         <View style={styles.loginButton}>
-                            <Button block style={{backgroundColor: '#f23151'}}>
+                            <Button block
+                                    title="SignIn"
+                                    style={{backgroundColor: '#f23151'}}
+                                    onPress={() => this.setState({selectedTab: 'signin'})}>
                                 <Text style={{color: '#FFFFFF'}}>Sign In</Text>
                             </Button>
                         </View>
@@ -80,7 +87,7 @@ export default class SignIn extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -92,4 +99,4 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     }
-}
+});

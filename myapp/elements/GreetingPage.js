@@ -42,9 +42,9 @@ export default class GreetingPage extends Component {
         return (
             <Container>
                 <Content>
-                    <Text/>
-                    <Text style={{textAlign: 'center', color: '#f23151', fontSize: 20, fontWeight: 'bold'}}>Welcome to HuskyEats!</Text>
-                    <Text/>
+                    <View style={{justifyContent: 'center', backgroundColor: '#f23151'}}>
+                        <Text style={{textAlign: 'center', color: '#fff', fontSize: 20, fontWeight: 'bold', padding: 25}}>Welcome to HuskyEats!</Text>
+                    </View>
                     <View>
                         <DeckSwiper
                             dataSource={cards}
@@ -53,13 +53,13 @@ export default class GreetingPage extends Component {
                             renderItem={item =>
                                 <Card style={{ elevation: 3 }}>
                                     <CardItem>
-                                        <Text style={{color: '#616161'}}>{item.name}</Text>
+                                        <Text style={{color: '#595959'}}>{item.name}</Text>
                                     </CardItem>
                                     <CardItem cardBody>
                                         <Image style={{ height: 300, flex: 1 }} source={item.image} />
                                     </CardItem>
                                     <CardItem>
-                                        <Text style={{color: '#616161'}}>{item.text}</Text>
+                                        <Text style={{color: '#595959'}}>{item.text}</Text>
                                     </CardItem>
                                 </Card>
                             }
@@ -68,12 +68,18 @@ export default class GreetingPage extends Component {
                 </Content>
                 <FooterTab>
                     <View style={styles.loginButton}>
-                        <Button block style={{backgroundColor: '#eeeeee'}} title="Sign In" onPress={() => this.props.navigation.navigate('SignIn')}>
-                            <Text style={{color: '#616161'}}>Sign In</Text>
+                        <Button block
+                                style={{backgroundColor: '#eeeeee'}}
+                                title="Sign In"
+                                onPress={() => this.props.navigation.navigate('SignIn')}>
+                            <Text style={{color: '#595959'}}>Sign In</Text>
                         </Button>
                     </View>
                     <View style={styles.getStartedButton}>
-                        <Button block style={{backgroundColor: '#f23151'}} title="Get Started" onPress={() => this.props.navigation.navigate('SignUp')}>
+                        <Button block
+                                style={{backgroundColor: '#f23151'}}
+                                title="Get Started"
+                                onPress={() => this.props.navigation.navigate('SignUp')}>
                             <Text style={{color: '#FFFFFF'}}>Get Started</Text>
                         </Button>
                     </View>
@@ -98,4 +104,4 @@ const styles = {
         width: '45%',
         justifyContent: 'center'
     }
-}
+};
