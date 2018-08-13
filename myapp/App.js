@@ -8,7 +8,13 @@ import GreetingCarousel from './elements/GreetingCarousel';
 import SignIn from './elements/SignIn';
 import SignUp from './elements/SignUp';
 import AddressForm from './elements/AddressForm';
+import ConfirmAddress from './elements/ConfirmAddress';
+import Browse from './elements/Browse';
+import Addresses from './elements/Addresses';
+import Restaurants from './elements/Restaurants';
+
 import { Constants } from 'expo';
+import RefineLocation from "./elements/RefineLocation";
 
 const { width } = Dimensions.get('window');
 const height = 300;
@@ -19,13 +25,13 @@ class Home extends Component {
 
         return {
             headerTitle: (
-                <Text style={{color: '#fff', fontSize: 20, fontWeight: 'bold'}}>HuskyEats</Text>
+                <Text style={{color: '#f23151', fontSize: 20, fontWeight: 'bold'}}>HuskyEats</Text>
             ),
             headerLeft: (
                 <Button
                     onPress={() => navigation.navigate('HuskyEatsInfo')}
                     title="Info"
-                    color="#fff"
+                    color="#f23151"
                 />
             ),
         };
@@ -70,8 +76,6 @@ class Home extends Component {
                         <View style={styles.container}>
                             <GreetingCarousel images={images}/>
                         </View>
-                        {/*<StatusBar barStyle="light-content"/>*/}
-                        {/*<FixedHeader/>*/}
                     </ScrollView>
                 </Content>
             </Container>
@@ -80,15 +84,32 @@ class Home extends Component {
 
 const MainStack = createStackNavigator(
     {
-        Home, SignIn, SignUp, AddressForm
+        Home, SignIn, SignUp, AddressForm, ConfirmAddress, RefineLocation
     },
     {
         initialRouteName: 'Home',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#f23151',
+                backgroundColor: '#fcfcfc',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#f23151',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
+    }
+);
+
+const AnoyStack = createStackNavigator(
+    {
+        Browse, Addresses, AddressForm, ConfirmAddress, RefineLocation
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#fcfcfc',
+            },
+            headerTintColor: '#f23151',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },
@@ -98,7 +119,7 @@ const MainStack = createStackNavigator(
 
 const RootStack = createStackNavigator(
     {
-        MainStack, HuskyEatsInfo
+        MainStack, HuskyEatsInfo, AnoyStack
     },
     {
         mode: 'modal',
