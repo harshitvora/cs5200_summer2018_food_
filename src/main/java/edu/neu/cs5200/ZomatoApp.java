@@ -1,3 +1,5 @@
+package edu.neu.cs5200;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
