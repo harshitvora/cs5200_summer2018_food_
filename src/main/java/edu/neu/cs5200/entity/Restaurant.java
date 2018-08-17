@@ -18,6 +18,10 @@ public class Restaurant {
     private List<HuskyOrder> huskyOrders;
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
+    private Integer zomatoId;
+    private Integer avgCostForTwo;
+    private Double aggregateRating;
+
 
     public int getId() {
         return id;
@@ -75,6 +79,30 @@ public class Restaurant {
         this.menus = menus;
     }
 
+    public Integer getZomatoId() {
+        return zomatoId;
+    }
+
+    public void setZomatoId(Integer zomatoId) {
+        this.zomatoId = zomatoId;
+    }
+
+    public Integer getAvgCostForTwo() {
+        return avgCostForTwo;
+    }
+
+    public void setAvgCostForTwo(Integer avgCostForTwo) {
+        this.avgCostForTwo = avgCostForTwo;
+    }
+
+    public Double getAggregateRating() {
+        return aggregateRating;
+    }
+
+    public void setAggregateRating(Double aggregateRating) {
+        this.aggregateRating = aggregateRating;
+    }
+
     public void set(Restaurant newRestaurant){
         setName(newRestaurant.getName());
         setUrl(newRestaurant.getUrl());
@@ -82,5 +110,8 @@ public class Restaurant {
         setReviews(newRestaurant.getReviews());
         setHuskyOrders(newRestaurant.getHuskyOrders());
         setMenus(newRestaurant.getMenus());
+        setZomatoId(newRestaurant.getZomatoId());
+        setAvgCostForTwo(newRestaurant.getAvgCostForTwo());
+        setAggregateRating(newRestaurant.getAggregateRating());
     }
 }

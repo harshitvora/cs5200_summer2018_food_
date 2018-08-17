@@ -1,5 +1,5 @@
 .DS_Store
-
+/Servers/
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
@@ -25,3 +25,5 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/.metadata/
+/.metadata/

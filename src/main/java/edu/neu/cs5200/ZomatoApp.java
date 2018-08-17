@@ -13,9 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.neu.cs5200.entity.Restaurant;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.web.client.RestTemplate;
 // import java.net.URLConnection;
 
 // https://developers.zomato.com/documentation#!/
@@ -24,7 +28,7 @@ class ZomatoMethods{
 
 	// TODO
 	// create a config file for key
-	String API_KEY = "";
+	String API_KEY = "8ba55b6038a3bc12b9d4a30c883964ec";
 	// Boston = 289
 //    "latitude": 42.358028,
 //    "longitude": -71.060417,
@@ -626,14 +630,16 @@ public HashMap<String, Integer> setCuisineIdMap(double latitude, double longitud
 		return cuisine_idMap;
 	}
 
-public List<HashMap<String, String>> getRestaurantInfo(double latitude, double longitude, Integer cuisineId){
+public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Integer cuisineId){
 
 	//https://developers.zomato.com/api/v2.1/search?lat=42.35&lon=-71.06&cuisines=148
 		String json_output = "";
 		String api_url = "https://developers.zomato.com/api/v2.1/search?lat="
 				+ latitude + "&lon=" + longitude + "&cuisines=" + cuisineId;
 
-		List<HashMap<String, String>> restaurantInfoList = new ArrayList<>();
+		//List<HashMap<String, String>> restaurantInfoList = new ArrayList<>();
+
+		List<Restaurant> restaurantInfoList = new ArrayList<>();
 
 		try {
 			URL url = new URL(api_url);
@@ -694,14 +700,29 @@ public List<HashMap<String, String>> getRestaurantInfo(double latitude, double l
 
 			    String cuisines = restaurantInner.getString("cuisines");
 
-			    restaurantInfo.put("res_id", res_id.toString());
-			    restaurantInfo.put("average_cost_for_two", average_cost_for_two.toString());
-			    restaurantInfo.put("aggregate_rating", aggregate_rating.toString());
-			    restaurantInfo.put("cuisines", cuisines);
+			    String restaurant_name = restaurantInner.getString("name");
 
-			    restaurantInfoList.add(restaurantInfo);
+//              no longer needed
+//			    restaurantInfo.put("res_id", res_id.toString());
+//			    restaurantInfo.put("average_cost_for_two", average_cost_for_two.toString());
+//			    restaurantInfo.put("aggregate_rating", aggregate_rating.toString());
+//			    restaurantInfo.put("cuisines", cuisines);
+
+
+
 			    //System.out.println(res_id + " " + average_cost_for_two + "aggregate" + aggregate_rating);
 			    //cuisines_list.add(cuisine_name);
+
+                Restaurant restaurant_object = new Restaurant();
+
+                restaurant_object.setZomatoId(res_id);
+                restaurant_object.setAvgCostForTwo(average_cost_for_two);
+                restaurant_object.setAggregateRating(aggregate_rating);
+                restaurant_object.setName(restaurant_name);
+
+                restaurantInfoList.add(restaurant_object);
+
+
 
 			}
 
@@ -764,8 +785,9 @@ public class ZomatoApp {
 
 //		HashMap<String, Integer> cuisineIdMap = zomatomethod.setCuisineIdMap(latitude, longitude);
 
-		List<HashMap<String,String>> test3 = zomatomethod.getRestaurantInfo(latitude, longitude, 148);
-		System.out.println(test3);
+		List<Restaurant> test3 = zomatomethod.getRestaurantInfo(latitude, longitude, 148);
+        //System.out.println(test3.get(0).getName());
 	}
+
 
 }
