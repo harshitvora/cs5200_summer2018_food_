@@ -16,10 +16,8 @@ public abstract class Person {
     private int id;
     private String firstName;
     private String lastName;
-    private String username;
     private String password;
     private String email;
-    private Date dob;
 
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -57,14 +55,6 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -79,14 +69,6 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
     }
 
     public List<Phone> getPhones() {
