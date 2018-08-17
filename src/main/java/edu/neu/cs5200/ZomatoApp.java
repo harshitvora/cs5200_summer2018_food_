@@ -7,22 +7,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.deploy.net.URLEncoder;
-import edu.neu.cs5200.entity.Restaurant;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
-// import java.net.URLConnection;
+
+import edu.neu.cs5200.entity.Restaurant;
 
 // https://developers.zomato.com/documentation#!/
 

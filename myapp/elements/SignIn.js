@@ -3,8 +3,9 @@ import {StyleSheet, View} from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import { Container, Content, Button, Icon, Segment, Text } from 'native-base';
 import SignUp from './SignUp';
+import {findCustomerByEmailPassword} from '../services/CustomerService';
 
-class HeaderSegment extends React.Component {
+class HeaderSegment extends Component {
 
     render() {
         this.state = {
@@ -46,7 +47,8 @@ export default class SignIn extends Component {
         this.state = {
             email: '',
             password: '',
-        }
+        };
+        this.getCustomer = this.getCustomer.bind(this);
     }
 
     static navigationOptions = ({ navigation }) => {
@@ -63,6 +65,12 @@ export default class SignIn extends Component {
         this.setState(newState)
     }
 
+    getCustomer(){
+        findCustomerByEmailPassword(this.state.email, this.state.password)
+            .then(customer => console.log(customer))
+            .catch();
+    }
+
     render() {
         return(
             <Container>
@@ -76,7 +84,7 @@ export default class SignIn extends Component {
                             <Button block
                                     title="SignIn"
                                     style={{backgroundColor: '#f23151'}}
-                                    onPress={() => this.setState({selectedTab: 'signin'})}>
+                                    onPress={this.getCustomer}>
                                 <Text style={{color: '#FFFFFF'}}>Sign In</Text>
                             </Button>
                         </View>

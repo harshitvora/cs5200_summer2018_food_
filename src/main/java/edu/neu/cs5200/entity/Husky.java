@@ -32,10 +32,8 @@ public class Husky extends Person {
     public void set(Husky newHusky){
         setFirstName(newHusky.getFirstName());
         setLastName(newHusky.getLastName());
-        setUsername(newHusky.getUsername());
         setPassword(newHusky.getPassword());
         setEmail(newHusky.getEmail());
-        setDob(newHusky.getDob());
         setHuskyOrders(newHusky.getHuskyOrders());
     }
 }
