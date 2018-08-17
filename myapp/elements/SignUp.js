@@ -4,12 +4,13 @@ import { FormLabel, FormInput } from 'react-native-elements';
 import { Container, Content, Button, Icon, Segment, Text } from 'native-base';
 import AddressForm from './AddressForm';
 import SignIn from './SignIn';
+import {createCustomer} from '../services/CustomerService';
 
 class HeaderSegment extends React.Component {
     render() {
         this.state = {
             seg: 1
-        }
+        };
         return (
             <Segment style={{backgroundColor: '#fff'}}>
                 <Button
@@ -40,14 +41,15 @@ class HeaderSegment extends React.Component {
 export default class SignUp extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             firstName: '',
             lastName: '',
             email: '',
             phone: '',
             password: ''
-        }
+        };
+        this.createNewCustomer = this.createNewCustomer.bind(this);
     }
 
     static navigationOptions = ({ navigation }) => {
@@ -69,7 +71,13 @@ export default class SignUp extends Component {
     };
 
     updateForm(newState) {
-        this.setState(newState)
+        this.setState(newState);
+    }
+
+    createNewCustomer(){
+        createCustomer(this.state)
+            .then(customer => console.log(customer))
+            .catch();
     }
 
     render() {
@@ -88,7 +96,7 @@ export default class SignUp extends Component {
                     <FormInput secureTextEntry={true} onChangeText={text => this.updateForm({password: text})}/>
                     <View style={styles.container}>
                         <View style={styles.signupButton}>
-                            <Button block title="SignUp" style={{backgroundColor: '#f23151'}}>
+                            <Button block title="SignUp" style={{backgroundColor: '#f23151'}} onPress={this.createNewCustomer}>
                                 <Text style={{color: '#FFFFFF'}}>Sign Up</Text>
                             </Button>
                         </View>
