@@ -4,6 +4,7 @@ import { FormLabel, FormInput } from 'react-native-elements';
 import { Container, Content, Button, Icon, Segment, Text } from 'native-base';
 import AddressForm from './AddressForm';
 import SignIn from './SignIn';
+import CustomerService from '../services/CustomerService';
 
 class HeaderSegment extends React.Component {
     render() {
@@ -41,12 +42,15 @@ export default class SignUp extends Component {
 
     constructor(props) {
         super(props)
+        this.customerService = CustomerService.instance;
         this.state = {
             firstName: '',
             lastName: '',
             email: '',
             phone: '',
-            password: ''
+            password: '',
+            newCustomer: {},
+            customers: []
         }
     }
 
@@ -68,9 +72,29 @@ export default class SignUp extends Component {
         };
     };
 
-    updateForm(newState) {
-        this.setState(newState)
+    componentDidMount() {
+        this.customerService.findAllCustomers()
+            .then(customers => {
+                this.setState({customers: customers});
+            });
     }
+
+    updateForm(newState) {
+        this.setState(newState);
+    };
+
+    createCustomer = () => {
+
+        this.customerService.createCustomer({newCustomer: {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                phone: this.state.phone,
+                password: this.state.password
+            }})
+            .then(customer  => this.customerService.findAllCustomers())
+            .then(customers => this.setState({customers: customers}))
+    };
 
     render() {
         return(
@@ -88,7 +112,9 @@ export default class SignUp extends Component {
                     <FormInput secureTextEntry={true} onChangeText={text => this.updateForm({password: text})}/>
                     <View style={styles.container}>
                         <View style={styles.signupButton}>
-                            <Button block title="SignUp" style={{backgroundColor: '#f23151'}}>
+                            <Button block title="SignUp"
+                                    style={{backgroundColor: '#f23151'}}
+                                    onPress={this.createCustomer()}>
                                 <Text style={{color: '#FFFFFF'}}>Sign Up</Text>
                             </Button>
                         </View>
