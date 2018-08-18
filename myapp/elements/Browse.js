@@ -20,26 +20,6 @@ export default class Browse extends Component {
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state;
 
-        function renderSelectedHeader() {
-            switch (this.selectedTab) {
-                case 'food':
-                    return Food;
-                    break;
-                case 'drinks':
-                    return Drinks;
-                    break;
-                case 'search':
-                    return Search;
-                    break;
-                case 'orders':
-                    return Orders;
-                    break;
-                case 'account':
-                    return Account;
-                    break;
-            }
-        }
-
         return {
             headerLeft: (
                 <Text style={{color: '#000000', fontSize: 25, fontWeight: 'bold', padding: 15}}>
@@ -56,6 +36,11 @@ export default class Browse extends Component {
             ),
         };
     };
+
+    // static navigationOptions = {
+    //     header: { visible:false },
+    //     title: 'Browse',
+    // };
 
     updateForm(newState) {
         this.setState(newState)

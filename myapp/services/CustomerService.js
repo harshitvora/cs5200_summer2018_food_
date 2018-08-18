@@ -1,4 +1,4 @@
-const CUSTOMER_API_URL = 'http://10.110.250.81:8080/api/customer';
+const CUSTOMER_API_URL = 'https://10.110.250.81:8080/api/customer';
 
 export function findCustomerById(customerId) {
     return fetch(CUSTOMER_API_URL + "/" + customerId)

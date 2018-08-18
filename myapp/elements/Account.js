@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { View, TouchableOpacity} from 'react-native';
 import { Container, Content, List, ListItem, Text, Left, Right, Icon } from 'native-base';
+import ProfileInformation from './ProfileInformation';
 
 export default class Account extends Component {
     render() {
@@ -9,7 +11,9 @@ export default class Account extends Component {
                     <List>
                         <ListItem>
                             <Left>
-                                <Text>Name goes here</Text>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfileInformation')}>
+                                    <Text>Name goes here</Text>
+                                </TouchableOpacity>
                             </Left>
                             <Right>
                                 <Icon name="arrow-forward" style={{color: '#595959'}}/>

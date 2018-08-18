@@ -12,6 +12,7 @@ import Browse from './elements/Browse';
 import Addresses from './elements/Addresses';
 import Restaurants from './elements/Restaurants';
 import Filter from './elements/Filter';
+import ProfileInformation from './elements/ProfileInformation';
 
 import { Constants } from 'expo';
 import RefineLocation from "./elements/RefineLocation";
@@ -94,7 +95,7 @@ const MainStack = createStackNavigator(
 
 const AnoyStack = createStackNavigator(
     {
-        Browse, Addresses, AddressForm, ConfirmAddress, RefineLocation, Filter
+        Browse, Addresses, AddressForm, ConfirmAddress, RefineLocation, Filter, ProfileInformation,
     },
     {
         navigationOptions: {

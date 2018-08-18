@@ -6,8 +6,7 @@ import AddressForm from './AddressForm';
 import SignIn from './SignIn';
 import {createCustomer} from '../services/CustomerService';
 
-class HeaderSegment extends Component {
-
+class HeaderSegment extends React.Component {
     render() {
         this.state = {
             seg: 1
@@ -39,7 +38,7 @@ class HeaderSegment extends Component {
     }
 }
 
-export default class SignUp extends Component {
+export default class ProfileInformation extends Component {
 
     constructor(props) {
         super(props);
@@ -58,7 +57,7 @@ export default class SignUp extends Component {
 
         return {
             headerTitle: (
-                <HeaderSegment />
+                <HeaderSegment/>
             ),
             headerRight: (
                 <Button
@@ -119,7 +118,7 @@ export default class SignUp extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -131,4 +130,4 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     }
-};
+});

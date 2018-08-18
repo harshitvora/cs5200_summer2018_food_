@@ -25,7 +25,7 @@ export default class AddressForm extends Component {
 
     updateForm(newState) {
         this.setState(newState)
-    }
+    };
 
     render() {
 

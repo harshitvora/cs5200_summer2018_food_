@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Container, Header, Content, Item, Input, Icon, Button, Text } from 'native-base';
+import { Container, Header, Content, List, ListItem, Item, Input, Icon, Button, Text } from 'native-base';
 
 export default class Search extends Component {
 
@@ -11,6 +11,14 @@ export default class Search extends Component {
     }
 
     render() {
+        var cuisines = [
+            'American',
+            'Asian',
+            'Barbeque',
+            'Breakfast',
+            'Indian'
+        ];
+
         return (
             <Container>
                 <Header searchBar block>
@@ -20,7 +28,14 @@ export default class Search extends Component {
                     </Item>
                 </Header>
                 <Content style={styles.container}>
-                    <Text style={{ color: '#595959', paddingTop: 10, fontWeight: 'bold' }}>CUISINES</Text>
+                    <Text style={{ color: '#595959', fontWeight: 'bold' }}>CUISINES</Text>
+                    <List dataArray={cuisines}
+                          renderRow={(cuisine) =>
+                              <ListItem>
+                                  <Text style={{ color: '#f23151'}}>{cuisine}</Text>
+                              </ListItem>
+                          }>
+                    </List>
                 </Content>
             </Container>
         );
