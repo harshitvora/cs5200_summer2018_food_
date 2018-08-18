@@ -43,4 +43,8 @@ public class HuskyOrderDao {
     public Optional<HuskyOrder> findOrderById(int id) {
         return huskyOrderRepository.findById(id);
     }
+
+    public List<HuskyOrder> findOrderByCustomerId(int customerId) {
+        return (List<HuskyOrder>) huskyOrderRepository.findByCustomerId(customerId);
+    }
 }

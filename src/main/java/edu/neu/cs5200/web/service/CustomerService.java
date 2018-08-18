@@ -26,7 +26,7 @@ public class CustomerService {
         return customerDao.findCustomerById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/customer/login")
     public Optional<Customer> loginCustomer(@RequestParam("email") String email, @RequestParam("password") String password) {
         return customerDao.findCustomerByCredentials(email, password);
@@ -43,7 +43,7 @@ public class CustomerService {
 //        return movies;
 //    }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/customer")
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerDao.createCustomer(customer);

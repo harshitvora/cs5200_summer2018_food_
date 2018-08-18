@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
     @Query("from Restaurant r where r.zomatoId=:zomatoId")
-    public Iterable<Restaurant> findByZomatoId(@Param("zomatoId") Integer zomatoId);
+    public Optional<Restaurant> findByZomatoId(@Param("zomatoId") Integer zomatoId);
 
 //    @Query("from Restaurant r where r.latitude=:latitude and r.longitude=:longitude")
 //    public Iterable<Restaurant> findRestaurantByLocation(@Param("latitude") Double latitude, @Param("longitude") Double longitude);

@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,8 +18,10 @@ public class Customer extends Person {
     private int expiryMM;
     private int expiryYY;
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<Review> reviews;
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<HuskyOrder> huskyOrders;
 
     public int getId() {

@@ -44,19 +44,12 @@ public class CustomerDao {
         return customerRepository.findById(id);
     }
 
-    public List<Customer> findCustomerByFirstNameAndLastName(String firstName, String lastName) {
-        return (List<Customer>) customerRepository.findByFirstNameAndLastName(firstName, lastName);
+    public Optional<Customer> findCustomerByFirstNameAndLastName(String firstName, String lastName) {
+        return customerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
     public Optional<Customer> findCustomerByCredentials(String email, String password) {
-        List<Customer> customers = (List<Customer>) customerRepository.findByCredentials(email, password);
-        Optional<Customer> customer;
-        if (customers.isEmpty()) {
-            customer = Optional.empty();
-        } else {
-            customer = Optional.of(customers.get(0));
-        }
-        return customer;
+        return customerRepository.findByCredentials(email, password);
 
     }
-};
+}

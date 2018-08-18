@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,8 +16,10 @@ public class HuskyOrder {
     @ManyToOne
     private Customer customer;
     @ManyToOne
+    @JsonIgnore
     private Husky husky;
     @ManyToOne
+    @JsonIgnore
     private Restaurant restaurant;
     @ManyToMany
     @JoinTable(name = "HuskyOrderItems",
