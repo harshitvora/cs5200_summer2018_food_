@@ -43,4 +43,8 @@ public class MenuDao {
     public Optional<Menu> findMenuById(int id) {
         return menuRepository.findById(id);
     }
+
+    public List<Menu> findMenuByRestaurantId(int restaurantId) {
+        return (List<Menu>) menuRepository.findMenuByRestaurantId(restaurantId);
+    }
 }

@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Item {
     private int id;
     private String name;
     private float price;
+    @JsonIgnore
     @ManyToOne
     private Menu menu;
 

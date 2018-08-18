@@ -20,6 +20,7 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     @JsonIgnore
     private List<HuskyOrder> huskyOrders;
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
     private Integer avgCostForTwo;

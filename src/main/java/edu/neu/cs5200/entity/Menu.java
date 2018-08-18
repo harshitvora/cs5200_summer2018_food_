@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @JsonIgnore
     @ManyToOne
     private Restaurant restaurant;
     @OneToMany(mappedBy = "menu")
