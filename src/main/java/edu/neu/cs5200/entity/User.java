@@ -142,6 +142,13 @@ public class User extends Person {
         this.supervisor = supervisor;
     }
 
+    public void addReview(Review review){
+        this.getReviews().add(review);
+        if(review.getCustomer() != this){
+            review.setCustomer(this);
+        }
+    }
+
     public void set(User newUser) {
         setFirstName(newUser.getFirstName());
         setLastName(newUser.getLastName());

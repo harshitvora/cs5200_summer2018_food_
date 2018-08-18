@@ -24,9 +24,14 @@ public class ReviewService {
         return reviewDao.findReviewById(id);
     }
 
+    @GetMapping("/api/review/restaurant/{restaurantId}")
+    public List<Review> findReviewByRestaurantId(@PathVariable("restaurantId") int id) {
+        return reviewDao.findReviewByRestaurantId(id);
+    }
+
     @PostMapping("/api/review")
-    public Review createReview(@RequestBody Review review) {
-        return reviewDao.createReview(review);
+    public Review createReview(@RequestBody Review review, @RequestParam("cid") int customerId, @RequestParam("rid") int restaurantId) {
+        return reviewDao.createReview(review, customerId, restaurantId);
     }
 
     @DeleteMapping("/api/review/{reviewId}")

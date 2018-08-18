@@ -15,6 +15,7 @@ public class Restaurant {
     private String url;
     private String email;
     @OneToMany(mappedBy = "restaurant")
+    @JsonIgnore
     private List<Review> reviews;
     @OneToMany(mappedBy = "restaurant")
     @JsonIgnore
@@ -121,6 +122,13 @@ public class Restaurant {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public void addReview(Review review){
+        this.getReviews().add(review);
+        if(review.getRestaurant() != this){
+            review.setRestaurant(this);
+        }
     }
 
     public void set(Restaurant newRestaurant){

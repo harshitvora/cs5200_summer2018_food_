@@ -1,7 +1,12 @@
 package edu.neu.cs5200.dao;
 
+import edu.neu.cs5200.entity.Customer;
+import edu.neu.cs5200.entity.Restaurant;
 import edu.neu.cs5200.entity.Review;
+import edu.neu.cs5200.entity.User;
+import edu.neu.cs5200.repository.RestaurantRepository;
 import edu.neu.cs5200.repository.ReviewRepository;
+import edu.neu.cs5200.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +19,27 @@ public class ReviewDao {
     @Autowired
     ReviewRepository reviewRepository;
 
-    public Review createReview(Review review) {
-        return reviewRepository.save(review);
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    RestaurantRepository restaurantRepository;
+
+    public Review createReview(Review review, int customerId, int restaurantId) {
+        Optional<User> customer = userRepository.findById(customerId);
+        Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+        if(customer.isPresent() && restaurant.isPresent()){
+            User customerObject = customer.get();
+            Restaurant restaurantObject = restaurant.get();
+            review.setRestaurant(restaurantObject);
+            review.setCustomer(customerObject);
+            customerObject.addReview(review);
+            restaurantObject.addReview(review);
+            userRepository.save(customerObject);
+            restaurantRepository.save(restaurantObject);
+            return reviewRepository.save(review);
+        }
+        return null;
     }
 
     public Review updateReview(int id, Review newReview) {
@@ -42,5 +66,9 @@ public class ReviewDao {
 
     public Optional<Review> findReviewById(int id) {
         return reviewRepository.findById(id);
+    }
+
+    public List<Review> findReviewByRestaurantId(int restaurantId) {
+        return  (List<Review>) reviewRepository.findByRestaurantId(restaurantId);
     }
 }

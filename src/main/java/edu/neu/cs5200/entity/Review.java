@@ -1,6 +1,7 @@
 package edu.neu.cs5200.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Review {
@@ -8,8 +9,10 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String title;
     private String text;
     private int rating;
+    private Date dateCreated;
     @ManyToOne
     private User customer;
     @ManyToOne
@@ -21,6 +24,14 @@ public class Review {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getText() {
@@ -37,6 +48,19 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        setDateCreated(new Date());
     }
 
     public User getCustomer() {
