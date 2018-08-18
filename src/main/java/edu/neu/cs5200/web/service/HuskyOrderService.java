@@ -24,9 +24,14 @@ public class HuskyOrderService {
         return huskyOrderDao.findOrderById(id);
     }
 
-    @GetMapping("/api/order/user/{customerId}")
+    @GetMapping("/api/order/customer/{customerId}")
     public List<HuskyOrder> findOrdersByCustomerId(@PathVariable("customerId") int customerId) {
         return huskyOrderDao.findOrderByCustomerId(customerId);
+    }
+
+    @GetMapping("/api/order/husky/{huskyId}")
+    public List<HuskyOrder> findOrdersByHuskyId(@PathVariable("huskyId") int huskyId) {
+        return huskyOrderDao.findOrderByHuskyId(huskyId);
     }
 
     @PostMapping("/api/order")

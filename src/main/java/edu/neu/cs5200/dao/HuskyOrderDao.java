@@ -47,4 +47,8 @@ public class HuskyOrderDao {
     public List<HuskyOrder> findOrderByCustomerId(int customerId) {
         return (List<HuskyOrder>) huskyOrderRepository.findByCustomerId(customerId);
     }
+
+    public List<HuskyOrder> findOrderByHuskyId(int huskyId) {
+        return (List<HuskyOrder>) huskyOrderRepository.findByHuskyId(huskyId);
+    }
 }
