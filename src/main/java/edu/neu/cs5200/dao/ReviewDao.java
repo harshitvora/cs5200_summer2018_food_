@@ -32,7 +32,7 @@ public class ReviewDao {
         reviewRepository.deleteById(id);
     }
 
-    public void deleteAllReviewes() {
+    public void deleteAllReviews() {
         reviewRepository.deleteAll();
     }
 

@@ -19,6 +19,11 @@ public class ItemService {
         return itemDao.findAllItems();
     }
 
+//    @GetMapping("/api/item/{menuId}")
+//    public List<Item> findItemById(@PathVariable("menuId") int menuId) {
+//        return itemDao.findItemsByMenuId(menuId);
+//    }
+
     @GetMapping("/api/item/{itemId}")
     public Optional<Item> findItemById(@PathVariable("itemId") int itemId) {
         return itemDao.findItemById(itemId);

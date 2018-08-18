@@ -44,6 +44,8 @@ public class ItemDao {
         return (List<Item>) itemRepository.findItemsByName(itemName);
     }
 
+    // TODO find items for a given menuId
+
     public Optional<Item> findItemById(int id) {
         return itemRepository.findById(id);
     }
