@@ -19,7 +19,6 @@ public class HuskyOrder {
     @JsonIgnore
     private Husky husky;
     @ManyToOne
-    @JsonIgnore
     private Restaurant restaurant;
     @ManyToMany
     @JoinTable(name = "HuskyOrderItems",

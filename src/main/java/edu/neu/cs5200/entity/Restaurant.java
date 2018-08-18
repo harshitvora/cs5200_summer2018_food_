@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews;
     @OneToMany(mappedBy = "restaurant")
+    @JsonIgnore
     private List<HuskyOrder> huskyOrders;
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
