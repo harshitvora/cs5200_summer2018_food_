@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Animated, View, ScrollView, Text, TouchableOpacity } from 'react-native';
-import { Container, Header, Content, Footer, FooterTab, Left, Right, Icon, Body, Title, Button, Drawer } from 'native-base';
-import RF from "react-native-responsive-fontsize";
+import { Text, TouchableOpacity } from 'react-native';
+import { Container, Content, Footer, FooterTab, Icon, Button, Drawer } from 'native-base';
 import Food from "./Food";
 import Drinks from "./Drinks";
 import Search from "./Search";
@@ -21,9 +20,30 @@ export default class Browse extends Component {
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state;
 
+        function renderSelectedHeader() {
+            switch (this.selectedTab) {
+                case 'food':
+                    return Food;
+                    break;
+                case 'drinks':
+                    return Drinks;
+                    break;
+                case 'search':
+                    return Search;
+                    break;
+                case 'orders':
+                    return Orders;
+                    break;
+                case 'account':
+                    return Account;
+                    break;
+            }
+        }
+
         return {
             headerLeft: (
-                <Text style={{color: '#000000', fontSize: 25, fontWeight: 'bold', padding: 15}}>Browse</Text>
+                <Text style={{color: '#000000', fontSize: 25, fontWeight: 'bold', padding: 15}}>
+                    Browse</Text>
             ),
             headerRight: (
                 <Button
@@ -66,13 +86,6 @@ export default class Browse extends Component {
     }
 
     render() {
-
-        closeDrawer = () => {
-            this.drawer._root.close()
-        };
-        openDrawer = () => {
-            this.drawer._root.open()
-        };
 
         return(
             <Container style={{backgroundColor:'#fff'}}>

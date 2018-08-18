@@ -11,5 +11,5 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     public Iterable<Customer> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
     @Query("from Customer c where c.email=:email and c.password=:password")
-    public Iterable<Customer> findByCredentials(@Param("email") String username, @Param("password") String password);
+    public Iterable<Customer> findByCredentials(@Param("email") String email, @Param("password") String password);
 }

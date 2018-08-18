@@ -10,6 +10,6 @@ public interface HuskyRepository extends CrudRepository<Husky, Integer> {
     @Query("from Husky h where h.firstName=:firstName and h.lastName=:lastName")
     public Iterable<Husky> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
-    @Query("from Husky h where h.username=:username and h.password=:password")
-    public Iterable<Husky> findByCredentials(@Param("username") String username, @Param("password") String password);
+    @Query("from Husky h where h.email=:email and h.password=:password")
+    public Iterable<Husky> findByCredentials(@Param("email") String email, @Param("password") String password);
 }

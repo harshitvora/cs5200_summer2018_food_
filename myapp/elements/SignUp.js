@@ -6,7 +6,8 @@ import AddressForm from './AddressForm';
 import SignIn from './SignIn';
 import {createCustomer} from '../services/CustomerService';
 
-class HeaderSegment extends React.Component {
+class HeaderSegment extends Component {
+
     render() {
         this.state = {
             seg: 1
@@ -57,7 +58,7 @@ export default class SignUp extends Component {
 
         return {
             headerTitle: (
-                <HeaderSegment/>
+                <HeaderSegment />
             ),
             headerRight: (
                 <Button

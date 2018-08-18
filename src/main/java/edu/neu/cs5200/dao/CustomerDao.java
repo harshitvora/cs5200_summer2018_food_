@@ -48,6 +48,16 @@ public class CustomerDao {
         return (List<Customer>) customerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
+    public Optional<Customer> findCustomerByCredentials(String email, String password) {
+        List<Customer> customers = (List<Customer>) customerRepository.findByCredentials(email, password);
+        Optional<Customer> customer;
+        if(customers.isEmpty()){
+            customer = Optional.empty();
+        }
+        else {
+            customer = Optional.of(customers.get(0));
+        }
+        return customer;
     // TODO change from LIST to Optional
     public List<Customer> findCustomerByCredentials(String username, String password) {
         return (List<Customer>) customerRepository.findByCredentials(username, password);

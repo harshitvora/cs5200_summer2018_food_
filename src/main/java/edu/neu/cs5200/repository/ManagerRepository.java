@@ -10,6 +10,6 @@ public interface ManagerRepository extends CrudRepository<Manager, Integer> {
     @Query("from Manager c where c.firstName=:firstName and c.lastName=:lastName")
     public Iterable<Manager> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
-    @Query("from Manager c where c.username=:username and c.password=:password")
-    public Iterable<Manager> findByCredentials(@Param("username") String username, @Param("password") String password);
+    @Query("from Manager c where c.email=:email and c.password=:password")
+    public Iterable<Manager> findByCredentials(@Param("email") String email, @Param("password") String password);
 }

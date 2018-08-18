@@ -87,10 +87,8 @@ public class Customer extends Person {
     public void set(Customer newCustomer) {
         setFirstName(newCustomer.getFirstName());
         setLastName(newCustomer.getLastName());
-        setUsername(newCustomer.getUsername());
         setPassword(newCustomer.getPassword());
         setEmail(newCustomer.getEmail());
-        setDob(newCustomer.getDob());
         setPreferredLocation(newCustomer.getPreferredLocation());
         setReviews(newCustomer.getReviews());
         setHuskyOrders(newCustomer.getHuskyOrders());

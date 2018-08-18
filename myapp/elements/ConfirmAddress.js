@@ -5,6 +5,7 @@ import Geocoder from 'react-native-geocoder';
 import MapView,  { PROVIDER_GOOGLE } from "react-native-maps";
 import RefineLocation from './RefineLocation';
 import Browse from './Browse';
+import GoogleMaps from 'react-native-maps';
 
 // simply add your google key
 Geocoder.fallbackToGoogle('AIzaSyCvAhyVQdC7VtQw-McXtUm9fDBwDneWdWI');

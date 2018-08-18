@@ -42,10 +42,8 @@ public class Manager extends Person {
     public void set(Manager newManager){
         setFirstName(newManager.getFirstName());
         setLastName(newManager.getLastName());
-        setUsername(newManager.getUsername());
         setPassword(newManager.getPassword());
         setEmail(newManager.getEmail());
-        setDob(newManager.getDob());
         setReports(newManager.getReports());
         setSupervisor(newManager.getSupervisor());
     }

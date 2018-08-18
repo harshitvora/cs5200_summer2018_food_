@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import { StyleSheet, ScrollView, Dimensions, Button, Text } from 'react-native';
+import { StyleSheet, Button, Text } from 'react-native';
 import { Container, View, Content } from 'native-base';
 import {createStackNavigator, StackNavigator} from 'react-navigation';
 import HuskyEatsInfo from './elements/HuskyEatsInfo';
 import GreetingPage from './elements/GreetingPage';
-import GreetingCarousel from './elements/GreetingCarousel';
 import SignIn from './elements/SignIn';
 import SignUp from './elements/SignUp';
 import AddressForm from './elements/AddressForm';
@@ -12,12 +11,10 @@ import ConfirmAddress from './elements/ConfirmAddress';
 import Browse from './elements/Browse';
 import Addresses from './elements/Addresses';
 import Restaurants from './elements/Restaurants';
+import Filter from './elements/Filter';
 
 import { Constants } from 'expo';
 import RefineLocation from "./elements/RefineLocation";
-
-const { width } = Dimensions.get('window');
-const height = 300;
 
 class Home extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -71,12 +68,7 @@ class Home extends Component {
         return(
             <Container>
                 <Content>
-                    <ScrollView>
-                        <GreetingPage navigation={this.props.navigation}/>
-                        <View style={styles.container}>
-                            <GreetingCarousel images={images}/>
-                        </View>
-                    </ScrollView>
+                    <GreetingPage navigation={this.props.navigation}/>
                 </Content>
             </Container>
         )}
@@ -102,7 +94,7 @@ const MainStack = createStackNavigator(
 
 const AnoyStack = createStackNavigator(
     {
-        Browse, Addresses, AddressForm, ConfirmAddress, RefineLocation
+        Browse, Addresses, AddressForm, ConfirmAddress, RefineLocation, Filter
     },
     {
         navigationOptions: {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Container, Content, ListItem, Text, Radio, Right, Left, Icon, Button } from 'native-base';
+import { Container, Content, SwipeRow, ListItem, Text, Radio, Right, Left, Icon, Button } from 'native-base';
 import Browse from './Browse';
 import AddressForm from './AddressForm';
 
@@ -50,7 +50,7 @@ export default class Addresses extends Component {
 
         return (
             <Container>
-                <Content style={styles.container}>
+                <Content style={styles.container} scrollEnabled={false}>
                     <ListItem selected={this.state.addressSelected == 'addressOne'}>
                         <Left>
                             <Text style={{color: '#f23151'}}>{address}</Text>
