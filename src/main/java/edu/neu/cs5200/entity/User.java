@@ -149,6 +149,13 @@ public class User extends Person {
         }
     }
 
+    public void addOrder(HuskyOrder huskyOrder){
+        this.getHuskyOrders().add(huskyOrder);
+        if(huskyOrder.getHusky() != this){
+            huskyOrder.setHusky(this);
+        }
+    }
+
     public void set(User newUser) {
         setFirstName(newUser.getFirstName());
         setLastName(newUser.getLastName());

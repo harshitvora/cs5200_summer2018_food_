@@ -14,4 +14,7 @@ public interface HuskyOrderRepository extends CrudRepository<HuskyOrder, Integer
 
     @Query("from HuskyOrder h where h.husky.id=:huskyId")
     public Iterable<HuskyOrder> findByHuskyId(@Param("huskyId") int huskyId);
+
+    @Query("from HuskyOrder h where h.status='PENDING'")
+    public Iterable<HuskyOrder> findAvailable();
 }

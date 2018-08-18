@@ -34,6 +34,17 @@ public class HuskyOrderService {
         return huskyOrderDao.findOrderByHuskyId(huskyId);
     }
 
+    @GetMapping("/api/order/husky/")
+    public List<HuskyOrder> findAvailableOrders() {
+        return huskyOrderDao.findAvailableOrders();
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/api/order/husky/{huskyId}")
+    public HuskyOrder acceptOrder(@RequestBody HuskyOrder huskyOrder, @PathVariable("huskyId") int huskyId) {
+        return huskyOrderDao.acceptOrder(huskyOrder, huskyId);
+    }
+
     @PostMapping("/api/order")
     public HuskyOrder createOrder(@RequestBody HuskyOrder huskyOrder) {
         return huskyOrderDao.createOrder(huskyOrder);
@@ -44,6 +55,7 @@ public class HuskyOrderService {
         huskyOrderDao.deleteOrder(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/api/order/{orderId}")
     public HuskyOrder updateOrder(@PathVariable("orderId") int id, @RequestBody HuskyOrder newHuskyOrder) {
         return huskyOrderDao.updateOrder(id, newHuskyOrder);
