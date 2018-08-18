@@ -11,7 +11,7 @@ public class Review {
     private String text;
     private int rating;
     @ManyToOne
-    private Customer customer;
+    private User customer;
     @ManyToOne
     private Restaurant restaurant;
 
@@ -39,11 +39,11 @@ public class Review {
         this.rating = rating;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 

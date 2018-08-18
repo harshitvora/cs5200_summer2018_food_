@@ -10,10 +10,10 @@ public class Manager extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(mappedBy = "supervisor")
-    private List<Manager> reports;
-    @ManyToOne
-    private Manager supervisor;
+//    @OneToMany(mappedBy = "supervisor")
+//    private List<Manager> reports;
+//    @ManyToOne
+//    private Manager supervisor;
 
     public int getId() {
         return id;
@@ -23,28 +23,28 @@ public class Manager extends Person {
         this.id = id;
     }
 
-    public List<Manager> getReports() {
-        return reports;
-    }
-
-    public void setReports(List<Manager> reports) {
-        this.reports = reports;
-    }
-
-    public Manager getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Manager supervisor) {
-        this.supervisor = supervisor;
-    }
+//    public List<Manager> getReports() {
+//        return reports;
+//    }
+//
+//    public void setReports(List<Manager> reports) {
+//        this.reports = reports;
+//    }
+//
+//    public Manager getSupervisor() {
+//        return supervisor;
+//    }
+//
+//    public void setSupervisor(Manager supervisor) {
+//        this.supervisor = supervisor;
+//    }
 
     public void set(Manager newManager){
         setFirstName(newManager.getFirstName());
         setLastName(newManager.getLastName());
         setPassword(newManager.getPassword());
         setEmail(newManager.getEmail());
-        setReports(newManager.getReports());
-        setSupervisor(newManager.getSupervisor());
+//        setReports(newManager.getReports());
+//        setSupervisor(newManager.getSupervisor());
     }
 }

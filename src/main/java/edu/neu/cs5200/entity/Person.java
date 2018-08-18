@@ -2,13 +2,7 @@ package edu.neu.cs5200.entity;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -23,6 +17,7 @@ public abstract class Person {
     private String firstName;
     private String lastName;
     private String password;
+    @Column(unique = true)
     private String email;
 
     @OneToMany(mappedBy = "person")

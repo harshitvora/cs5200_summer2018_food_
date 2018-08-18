@@ -10,8 +10,8 @@ public class Husky extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(mappedBy = "husky")
-    private List<HuskyOrder> huskyOrders;
+//    @OneToMany(mappedBy = "husky")
+//    private List<HuskyOrder> huskyOrders;
 
     public int getId() {
         return id;
@@ -21,19 +21,19 @@ public class Husky extends Person {
         this.id = id;
     }
 
-    public List<HuskyOrder> getHuskyOrders() {
-        return huskyOrders;
-    }
-
-    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
-        this.huskyOrders = huskyOrders;
-    }
+//    public List<HuskyOrder> getHuskyOrders() {
+//        return huskyOrders;
+//    }
+//
+//    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
+//        this.huskyOrders = huskyOrders;
+//    }
 
     public void set(Husky newHusky){
         setFirstName(newHusky.getFirstName());
         setLastName(newHusky.getLastName());
         setPassword(newHusky.getPassword());
         setEmail(newHusky.getEmail());
-        setHuskyOrders(newHusky.getHuskyOrders());
+//        setHuskyOrders(newHusky.getHuskyOrders());
     }
 }
