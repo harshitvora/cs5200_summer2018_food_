@@ -29,11 +29,17 @@ public class ReviewService {
         return reviewDao.findReviewByRestaurantId(id);
     }
 
+    @GetMapping("/api/review/user/{userId}")
+    public List<Review> findReviewByUserId(@PathVariable("userId") int id) {
+        return reviewDao.findReviewByUserId(id);
+    }
+
     @PostMapping("/api/review")
     public Review createReview(@RequestBody Review review, @RequestParam("cid") int customerId, @RequestParam("rid") int restaurantId) {
         return reviewDao.createReview(review, customerId, restaurantId);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/api/review/{reviewId}")
     public void deleteReview(@PathVariable("reviewId") int id) {
         reviewDao.deleteReview(id);

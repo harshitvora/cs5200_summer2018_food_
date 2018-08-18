@@ -71,4 +71,8 @@ public class ReviewDao {
     public List<Review> findReviewByRestaurantId(int restaurantId) {
         return  (List<Review>) reviewRepository.findByRestaurantId(restaurantId);
     }
+
+    public List<Review> findReviewByUserId(int userId) {
+        return  (List<Review>) reviewRepository.findByUserId(userId);
+    }
 }

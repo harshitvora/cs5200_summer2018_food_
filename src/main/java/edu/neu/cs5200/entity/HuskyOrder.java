@@ -16,7 +16,6 @@ public class HuskyOrder {
     @ManyToOne
     private User customer;
     @ManyToOne
-    @JsonIgnore
     private User husky;
     @ManyToOne
     private Restaurant restaurant;

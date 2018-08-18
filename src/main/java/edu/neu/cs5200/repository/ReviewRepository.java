@@ -12,4 +12,7 @@ import java.util.Optional;
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
     @Query("from Review r where r.restaurant.id=:restaurantId")
     public Iterable<Review> findByRestaurantId(@Param("restaurantId") int restaurantId);
+
+    @Query("from Review r where r.customer.id=:userId")
+    public Iterable<Review> findByUserId(@Param("userId") int userId);
 }
