@@ -32,6 +32,7 @@ public class RestaurantService {
         return restaurant;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/restaurant/zomato/{restZomatoId}")
     public Optional<Restaurant> findRestaurantByZomatoId(@PathVariable("restZomatoId") int zomatoId) {
         Optional<Restaurant> restaurant = restaurantDao.findRestaurantByZomatoId(zomatoId);

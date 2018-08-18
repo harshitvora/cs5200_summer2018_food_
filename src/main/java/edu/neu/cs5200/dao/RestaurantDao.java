@@ -56,8 +56,8 @@ public class RestaurantDao {
         return restaurant;
     }
 
-    public List<Restaurant> findRestaurantByLocation(Double latitude, Double longitude) {
-        return (List<Restaurant>) restaurantRepository.findRestaurantByLocation(latitude, longitude);
-    }
+//    public List<Restaurant> findRestaurantByLocation(Double latitude, Double longitude) {
+//        return (List<Restaurant>) restaurantRepository.findRestaurantByLocation(latitude, longitude);
+//    }
 
 }

@@ -10,7 +10,7 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Integer
     @Query("from Restaurant r where r.zomatoId=:zomatoId")
     public Iterable<Restaurant> findByZomatoId(@Param("zomatoId") Integer zomatoId);
 
-    @Query("from Restaurant r where r.latitude=:latitude and r.longitude=:longitude")
-    public Iterable<Restaurant> findRestaurantByLocation(@Param("latitude") Double latitude, @Param("longitude") Double longitude);
+//    @Query("from Restaurant r where r.latitude=:latitude and r.longitude=:longitude")
+//    public Iterable<Restaurant> findRestaurantByLocation(@Param("latitude") Double latitude, @Param("longitude") Double longitude);
 
 }

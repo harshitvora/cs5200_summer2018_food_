@@ -34,13 +34,12 @@ export default class AddressForm extends Component {
                 <Content>
                     <View>
                         <Text style={{color: '#595959', padding: 15}}>Let us know where to send your order. Please enter an address or city name.</Text>
-                        <FormLabel>Street Address</FormLabel>
+                        <FormLabel><Text>Street Address</Text></FormLabel>
                         <FormInput style={{border: 1}} onChangeText={text => this.updateForm({address: text})}/>
                     </View>
-                    { this.state.address &&
                     <View>
                         <View>
-                            <FormLabel>Apartment # (Optional)</FormLabel>
+                            <FormLabel><Text>Apartment # (Optional)</Text></FormLabel>
                             <FormInput style={{border: 1}} onChangeText={text => this.updateForm({apt: text})}/>
                         </View>
                         <View style={styles.container}>
@@ -53,7 +52,7 @@ export default class AddressForm extends Component {
                                 </Button>
                             </View>
                         </View>
-                    </View>}
+                    </View>
                 </Content>
             </Container>
         )
