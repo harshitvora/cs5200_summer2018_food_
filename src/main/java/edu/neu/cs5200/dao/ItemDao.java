@@ -18,11 +18,11 @@ public class ItemDao {
         return itemRepository.save(item);
     }
 
-    public Item updateItem(int id, Item newAdress) {
+    public Item updateItem(int id, Item newItem) {
         Optional<Item> optional = itemRepository.findById(id);
         if (optional.isPresent()) {
             Item item = optional.get();
-            item.set(newAdress);
+            item.set(newItem);
             return itemRepository.save(item);
         }
         return null;
@@ -32,13 +32,19 @@ public class ItemDao {
         itemRepository.deleteById(id);
     }
 
-    public void deleteAllItemes() {
-        itemRepository.deleteAll();
+    public void deleteAllItems(int menuId) {
+        itemRepository.deleteById(menuId);
     }
 
     public List<Item> findAllItems() {
         return (List<Item>) itemRepository.findAll();
     }
+
+    public List<Item> findAllItemsByName(String itemName) {
+        return (List<Item>) itemRepository.findItemsByName(itemName);
+    }
+
+    // TODO find items for a given menuId
 
     public Optional<Item> findItemById(int id) {
         return itemRepository.findById(id);

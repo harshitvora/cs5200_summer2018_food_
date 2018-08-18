@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String url;
@@ -15,13 +17,15 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews;
     @OneToMany(mappedBy = "restaurant")
+    @JsonIgnore
     private List<HuskyOrder> huskyOrders;
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
-    private Integer zomatoId;
     private Integer avgCostForTwo;
     private Double aggregateRating;
-
+    private Double latitude;
+    private Double longitude;
+    private String imageUrl;
 
     public int getId() {
         return id;
@@ -79,14 +83,6 @@ public class Restaurant {
         this.menus = menus;
     }
 
-    public Integer getZomatoId() {
-        return zomatoId;
-    }
-
-    public void setZomatoId(Integer zomatoId) {
-        this.zomatoId = zomatoId;
-    }
-
     public Integer getAvgCostForTwo() {
         return avgCostForTwo;
     }
@@ -103,6 +99,30 @@ public class Restaurant {
         this.aggregateRating = aggregateRating;
     }
 
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public void set(Restaurant newRestaurant){
         setName(newRestaurant.getName());
         setUrl(newRestaurant.getUrl());
@@ -110,7 +130,6 @@ public class Restaurant {
         setReviews(newRestaurant.getReviews());
         setHuskyOrders(newRestaurant.getHuskyOrders());
         setMenus(newRestaurant.getMenus());
-        setZomatoId(newRestaurant.getZomatoId());
         setAvgCostForTwo(newRestaurant.getAvgCostForTwo());
         setAggregateRating(newRestaurant.getAggregateRating());
     }

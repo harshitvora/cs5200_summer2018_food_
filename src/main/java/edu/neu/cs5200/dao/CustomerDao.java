@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Component
 public class CustomerDao {
-    
+
     @Autowired
     CustomerRepository customerRepository;
 
@@ -44,11 +44,12 @@ public class CustomerDao {
         return customerRepository.findById(id);
     }
 
-    public List<Customer> findCustomerByFirstNameAndLastName(String firstName, String lastName) {
-        return (List<Customer>) customerRepository.findByFirstNameAndLastName(firstName, lastName);
+    public Optional<Customer> findCustomerByFirstNameAndLastName(String firstName, String lastName) {
+        return customerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
-    public List<Customer> findCustomerByCredentials(String username, String password) {
-        return (List<Customer>) customerRepository.findByCredentials(username, password);
+    public Optional<Customer> findCustomerByCredentials(String email, String password) {
+        return customerRepository.findByCredentials(email, password);
+
     }
 }

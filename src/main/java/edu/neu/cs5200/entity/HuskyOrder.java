@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,9 +14,10 @@ public class HuskyOrder {
     private float amount;
     private String status;
     @ManyToOne
-    private Customer customer;
+    private User customer;
     @ManyToOne
-    private Husky husky;
+    @JsonIgnore
+    private User husky;
     @ManyToOne
     private Restaurant restaurant;
     @ManyToMany
@@ -47,19 +50,19 @@ public class HuskyOrder {
         this.status = status;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
-    public Husky getHusky() {
+    public User getHusky() {
         return husky;
     }
 
-    public void setHusky(Husky husky) {
+    public void setHusky(User husky) {
         this.husky = husky;
     }
 

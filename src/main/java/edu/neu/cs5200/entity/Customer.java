@@ -1,5 +1,7 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,10 +17,12 @@ public class Customer extends Person {
     private String cvv;
     private int expiryMM;
     private int expiryYY;
-    @OneToMany(mappedBy = "customer")
-    private List<Review> reviews;
-    @OneToMany(mappedBy = "customer")
-    private List<HuskyOrder> huskyOrders;
+//    @OneToMany(mappedBy = "customer")
+//    @JsonIgnore
+//    private List<Review> reviews;
+//    @OneToMany(mappedBy = "customer")
+//    @JsonIgnore
+//    private List<HuskyOrder> huskyOrders;
 
     public int getId() {
         return id;
@@ -68,21 +72,21 @@ public class Customer extends Person {
         this.expiryYY = expiryYY;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public List<HuskyOrder> getHuskyOrders() {
-        return huskyOrders;
-    }
-
-    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
-        this.huskyOrders = huskyOrders;
-    }
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
+//
+//    public List<HuskyOrder> getHuskyOrders() {
+//        return huskyOrders;
+//    }
+//
+//    public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
+//        this.huskyOrders = huskyOrders;
+//    }
 
     public void set(Customer newCustomer) {
         setFirstName(newCustomer.getFirstName());
@@ -90,7 +94,7 @@ public class Customer extends Person {
         setPassword(newCustomer.getPassword());
         setEmail(newCustomer.getEmail());
         setPreferredLocation(newCustomer.getPreferredLocation());
-        setReviews(newCustomer.getReviews());
-        setHuskyOrders(newCustomer.getHuskyOrders());
+//        setReviews(newCustomer.getReviews());
+//        setHuskyOrders(newCustomer.getHuskyOrders());
     }
 }

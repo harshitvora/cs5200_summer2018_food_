@@ -711,7 +711,7 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
                 Restaurant restaurant_object = new Restaurant();
 
-                restaurant_object.setZomatoId(res_id);
+                restaurant_object.setId(res_id);
                 restaurant_object.setAvgCostForTwo(average_cost_for_two);
                 restaurant_object.setAggregateRating(aggregate_rating);
                 restaurant_object.setName(restaurant_name);
@@ -827,7 +827,7 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
                 Restaurant restaurant_object = new Restaurant();
 
-                restaurant_object.setZomatoId(res_id);
+                restaurant_object.setId(res_id);
                 restaurant_object.setAvgCostForTwo(average_cost_for_two);
                 restaurant_object.setAggregateRating(aggregate_rating);
                 restaurant_object.setName(restaurant_name);
@@ -901,16 +901,27 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
             JSONObject user_rating = obj.getJSONObject("user_rating");
 
+            JSONObject location = obj.getJSONObject("location");
+
             Double aggregate_rating = user_rating.getDouble("aggregate_rating");
+
+			Double latitude = location.getDouble("latitude");
+
+			Double longitude = location.getDouble("longitude");
 
             String cuisines = obj.getString("cuisines");
 
             String restaurant_name = obj.getString("name");
 
-            restaurant_object.setZomatoId(res_id);
+			String imageUrl = obj.getString("featured_image");
+
+			restaurant_object.setId(res_id);
             restaurant_object.setAvgCostForTwo(average_cost_for_two);
             restaurant_object.setAggregateRating(aggregate_rating);
             restaurant_object.setName(restaurant_name);
+            restaurant_object.setLatitude(latitude);
+            restaurant_object.setLongitude(longitude);
+			restaurant_object.setImageUrl(imageUrl);
 
         } catch (Exception e) {
             e.printStackTrace();
