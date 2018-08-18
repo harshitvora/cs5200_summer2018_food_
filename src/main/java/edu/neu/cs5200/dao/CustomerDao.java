@@ -1,6 +1,7 @@
 package edu.neu.cs5200.dao;
 
 import edu.neu.cs5200.entity.Customer;
+import edu.neu.cs5200.entity.Restaurant;
 import edu.neu.cs5200.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -48,7 +49,15 @@ public class CustomerDao {
         return (List<Customer>) customerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
-    public List<Customer> findCustomerByCredentials(String username, String password) {
-        return (List<Customer>) customerRepository.findByCredentials(username, password);
+    public Optional<Customer> findCustomerByCredentials(String email, String password) {
+        List<Customer> customers = (List<Customer>) customerRepository.findByCredentials(email, password);
+        Optional<Customer> customer;
+        if(customers.isEmpty()){
+            customer = Optional.empty();
+        }
+        else {
+            customer = Optional.of(customers.get(0));
+        }
+        return customer;
     }
 }
