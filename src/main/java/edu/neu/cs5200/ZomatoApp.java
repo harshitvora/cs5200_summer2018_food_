@@ -711,7 +711,7 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
                 Restaurant restaurant_object = new Restaurant();
 
-                restaurant_object.setZomatoId(res_id);
+                restaurant_object.setId(res_id);
                 restaurant_object.setAvgCostForTwo(average_cost_for_two);
                 restaurant_object.setAggregateRating(aggregate_rating);
                 restaurant_object.setName(restaurant_name);
@@ -827,7 +827,7 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
                 Restaurant restaurant_object = new Restaurant();
 
-                restaurant_object.setZomatoId(res_id);
+                restaurant_object.setId(res_id);
                 restaurant_object.setAvgCostForTwo(average_cost_for_two);
                 restaurant_object.setAggregateRating(aggregate_rating);
                 restaurant_object.setName(restaurant_name);
@@ -915,7 +915,7 @@ public List<Restaurant> getRestaurantInfo(double latitude, double longitude, Int
 
 			String imageUrl = obj.getString("featured_image");
 
-            restaurant_object.setZomatoId(res_id);
+			restaurant_object.setId(res_id);
             restaurant_object.setAvgCostForTwo(average_cost_for_two);
             restaurant_object.setAggregateRating(aggregate_rating);
             restaurant_object.setName(restaurant_name);

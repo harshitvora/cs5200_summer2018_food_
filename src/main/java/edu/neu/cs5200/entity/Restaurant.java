@@ -9,7 +9,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String url;
@@ -21,7 +21,6 @@ public class Restaurant {
     private List<HuskyOrder> huskyOrders;
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
-    private Integer zomatoId;
     private Integer avgCostForTwo;
     private Double aggregateRating;
     private Double latitude;
@@ -84,14 +83,6 @@ public class Restaurant {
         this.menus = menus;
     }
 
-    public Integer getZomatoId() {
-        return zomatoId;
-    }
-
-    public void setZomatoId(Integer zomatoId) {
-        this.zomatoId = zomatoId;
-    }
-
     public Integer getAvgCostForTwo() {
         return avgCostForTwo;
     }
@@ -139,7 +130,6 @@ public class Restaurant {
         setReviews(newRestaurant.getReviews());
         setHuskyOrders(newRestaurant.getHuskyOrders());
         setMenus(newRestaurant.getMenus());
-        setZomatoId(newRestaurant.getZomatoId());
         setAvgCostForTwo(newRestaurant.getAvgCostForTwo());
         setAggregateRating(newRestaurant.getAggregateRating());
     }

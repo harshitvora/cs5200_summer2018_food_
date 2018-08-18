@@ -44,9 +44,6 @@ public class RestaurantDao {
         return restaurantRepository.findById(id);
     }
 
-    public Optional<Restaurant> findRestaurantByZomatoId(int zomatoId) {
-        return restaurantRepository.findByZomatoId(zomatoId);
-    }
 
 //    public List<Restaurant> findRestaurantByLocation(Double latitude, Double longitude) {
 //        return (List<Restaurant>) restaurantRepository.findRestaurantByLocation(latitude, longitude);

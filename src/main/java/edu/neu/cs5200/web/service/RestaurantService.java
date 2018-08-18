@@ -25,21 +25,8 @@ public class RestaurantService {
         Optional<Restaurant> restaurant = restaurantDao.findRestaurantById(id);
         if(!restaurant.isPresent()){
             // do external api call and save to local db
-            Restaurant newRestaurant = new Restaurant();
-            restaurantDao.createRestaurant(newRestaurant);
-            restaurant = Optional.of(newRestaurant);
-        }
-        return restaurant;
-    }
-
-//    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/api/restaurant/zomato/{restZomatoId}")
-    public Optional<Restaurant> findRestaurantByZomatoId(@PathVariable("restZomatoId") int zomatoId) {
-        Optional<Restaurant> restaurant = restaurantDao.findRestaurantByZomatoId(zomatoId);
-        if(!restaurant.isPresent()){
-            // do external api call and save to local db
             ZomatoApp zomatoApp = new ZomatoApp();
-            Restaurant newRestaurant = zomatoApp.searchRestaurantById(zomatoId);
+            Restaurant newRestaurant = zomatoApp.searchRestaurantById(id);
             restaurantDao.createRestaurant(newRestaurant);
             restaurant = Optional.of(newRestaurant);
         }

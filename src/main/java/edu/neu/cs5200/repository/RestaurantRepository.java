@@ -1,18 +1,7 @@
 package edu.neu.cs5200.repository;
 
-import edu.neu.cs5200.entity.Customer;
 import edu.neu.cs5200.entity.Restaurant;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
-import java.util.Optional;
 
 public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
-    @Query("from Restaurant r where r.zomatoId=:zomatoId")
-    public Optional<Restaurant> findByZomatoId(@Param("zomatoId") Integer zomatoId);
-
-//    @Query("from Restaurant r where r.latitude=:latitude and r.longitude=:longitude")
-//    public Iterable<Restaurant> findRestaurantByLocation(@Param("latitude") Double latitude, @Param("longitude") Double longitude);
-
 }
