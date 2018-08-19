@@ -1,6 +1,5 @@
 package edu.neu.cs5200.web.service;
 
-import edu.neu.cs5200.ZomatoApp;
 import edu.neu.cs5200.dao.RestaurantDao;
 import edu.neu.cs5200.entity.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,8 @@ public class RestaurantService {
     @GetMapping("/api/restaurant/{restaurantId}")
     public Optional<Restaurant> findRestaurantById(@PathVariable("restaurantId") int id) {
         Optional<Restaurant> restaurant = restaurantDao.findRestaurantById(id);
-        if(!restaurant.isPresent()){
-            // do external api call and save to local db
-            ZomatoApp zomatoApp = new ZomatoApp();
-            Restaurant newRestaurant = zomatoApp.searchRestaurantById(id);
+        if (!restaurant.isPresent()) {
+            Restaurant newRestaurant = restaurantDao.searchRestaurantByZomatoId(id);
             restaurantDao.createRestaurant(newRestaurant);
             restaurant = Optional.of(newRestaurant);
         }
