@@ -1,8 +1,11 @@
 package edu.neu.cs5200.dao;
 
 import edu.neu.cs5200.entity.HuskyOrder;
+import edu.neu.cs5200.entity.Item;
+import edu.neu.cs5200.entity.Restaurant;
 import edu.neu.cs5200.entity.User;
 import edu.neu.cs5200.repository.HuskyOrderRepository;
+import edu.neu.cs5200.repository.RestaurantRepository;
 import edu.neu.cs5200.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,8 +22,30 @@ public class HuskyOrderDao {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    RestaurantRepository restaurantRepository;
+
     public HuskyOrder createOrder(HuskyOrder huskyOrder) {
         return huskyOrderRepository.save(huskyOrder);
+    }
+
+    public HuskyOrder createNewOrder(List<Item> items, int restaurantId, int userId) {
+        HuskyOrder order = new HuskyOrder();
+        Optional<User> user = userRepository.findById(userId);
+        Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+        float amount = 0;
+        if(user.isPresent() && restaurant.isPresent()){
+            order.setCustomer(user.get());
+            order.setRestaurant(restaurant.get());
+            order.setItems(items);
+            for(Item item : items){
+                amount = amount + item.getPrice();
+            }
+            order.setAmount(amount);
+            return huskyOrderRepository.save(order);
+        }
+
+        return null;
     }
 
     public HuskyOrder updateOrder(int id, HuskyOrder newHuskyOrder) {

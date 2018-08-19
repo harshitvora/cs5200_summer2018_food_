@@ -3,6 +3,7 @@ package edu.neu.cs5200.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,7 @@ public class HuskyOrder {
             joinColumns = @JoinColumn(name = "orderId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "itemId", referencedColumnName = "id"))
     private List<Item> items;
+    private Date dateCreated;
 
     public int getId() {
         return id;
@@ -79,6 +81,19 @@ public class HuskyOrder {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        setDateCreated(new Date());
     }
 
     public void set(HuskyOrder newHuskyOrder){

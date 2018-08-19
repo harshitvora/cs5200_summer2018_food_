@@ -1,7 +1,9 @@
 package edu.neu.cs5200.web.service;
 
 import edu.neu.cs5200.dao.HuskyOrderDao;
+import edu.neu.cs5200.entity.Husky;
 import edu.neu.cs5200.entity.HuskyOrder;
+import edu.neu.cs5200.entity.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +50,11 @@ public class HuskyOrderService {
     @PostMapping("/api/order")
     public HuskyOrder createOrder(@RequestBody HuskyOrder huskyOrder) {
         return huskyOrderDao.createOrder(huskyOrder);
+    }
+
+    @PostMapping("/api/order/restaurant/{restaurantId}/user/{userId}")
+    public HuskyOrder createOrder(@RequestBody List<Item> items, @PathVariable("restaurantId") int restaurantId, @PathVariable("userId") int userId) {
+        return huskyOrderDao.createNewOrder(items, restaurantId, userId);
     }
 
     @DeleteMapping("/api/order/{orderId}")
