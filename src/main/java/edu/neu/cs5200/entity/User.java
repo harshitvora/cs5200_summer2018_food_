@@ -17,7 +17,7 @@ public class User extends Person {
     private String preferredLocation;
     @Size(min = 16, max = 16)
     private String ccNumber;
-    @Size(min = 3, max = 3)
+    @Size(min = 3, max = 4)
     private String cvv;
     @Size(min = 2, max = 2)
     private String expiryMM;
