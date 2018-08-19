@@ -33,6 +33,46 @@ public class UserDao {
         return null;
     }
 
+    public User followUser(int userId, int followId){
+        Optional<User> user = userRepository.findById(userId);
+        Optional<User> followUser = userRepository.findById(followId);
+        if (user.isPresent() && followUser.isPresent()) {
+            User userObject = user.get();
+            User followUserObject = followUser.get();
+            userObject.getFollowing().add(followUserObject);
+            return userRepository.save(userObject);
+        }
+        return null;
+    }
+
+    public Boolean isFollowed(int userId, int followId){
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            User userObject = user.get();
+            return userObject.getFollowing().stream().anyMatch(o -> o.getId() == followId);
+        }
+        return false;
+    }
+
+    public List<User> findFollowingForUser(int userId){
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            User userObject = user.get();
+            return userObject.getFollowing();
+        }
+        return null;
+    }
+
+    public User unfollowUser(int userId, int followId){
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            User userObject = user.get();
+            userObject.getFollowing().removeIf(followedUser -> followedUser.getId() == followId);
+            return userRepository.save(userObject);
+        }
+        return null;
+    }
+
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }

@@ -1,9 +1,6 @@
 package edu.neu.cs5200.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,6 +28,12 @@ public class User extends Person {
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     private List<HuskyOrder> huskyOrders;
+    @OneToMany
+    @JoinTable(name = "UserFollow",
+            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "followId", referencedColumnName = "id"))
+    @JsonIgnore
+    private List<User> following;
 
     // delivery staff
 
@@ -113,6 +116,14 @@ public class User extends Person {
 
     public void setHuskyOrders(List<HuskyOrder> huskyOrders) {
         this.huskyOrders = huskyOrders;
+    }
+
+    public List<User> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(List<User> following) {
+        this.following = following;
     }
 
     // delivery staff

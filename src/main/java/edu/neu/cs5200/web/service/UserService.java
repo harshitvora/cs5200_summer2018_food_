@@ -32,6 +32,17 @@ public class UserService {
         return userDao.findUserByCredentials(email, password);
     }
 
+//    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/api/user/{userId}/follow/{followId}")
+    public Boolean isFollowed(@PathVariable("userId") int id, @PathVariable("followId") int followId) {
+        return userDao.isFollowed(id, followId);
+    }
+
+    @GetMapping("/api/user/{userId}/following")
+    public List<User> findFollowingForUser(@PathVariable("userId") int id) {
+        return userDao.findFollowingForUser(id);
+    }
+
 //    @GetMapping("/api/user/{userId}/movie")
 //    public List<Movie> findMoviesByUserId(@PathVariable("userId") int id) {
 //        List<Movie> movies = new ArrayList<>();
@@ -65,5 +76,17 @@ public class UserService {
     @PutMapping("/api/user/restaurant/{restaurantId}")
     public User registerManager(@PathVariable("restaurantId") int id, @RequestBody User newUser) {
         return userDao.registerManager(newUser, id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/api/user/{userId}/follow/{followId}")
+    public User followUser(@PathVariable("userId") int id, @PathVariable("followId") int followId) {
+        return userDao.followUser(id, followId);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/api/user/{userId}/follow/{followId}")
+    public User unfollowUser(@PathVariable("userId") int id, @PathVariable("followId") int followId) {
+        return userDao.unfollowUser(id, followId);
     }
 }
