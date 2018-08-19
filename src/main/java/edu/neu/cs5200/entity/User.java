@@ -1,6 +1,9 @@
 package edu.neu.cs5200.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
@@ -36,11 +39,9 @@ public class User extends Person {
     private List<HuskyOrder> huskyDeliveries;
 
     // manager
-
-    @OneToMany(mappedBy = "supervisor")
-    private List<User> reports;
-    @ManyToOne
-    private User supervisor;
+    @JsonIgnore
+    @OneToOne(mappedBy = "manager")
+    private Restaurant restaurant;
 
     public int getId() {
         return id;
@@ -126,20 +127,13 @@ public class User extends Person {
 
     // manager
 
-    public List<User> getReports() {
-        return reports;
+
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setReports(List<User> reports) {
-        this.reports = reports;
-    }
-
-    public User getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(User supervisor) {
-        this.supervisor = supervisor;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public void addReview(Review review){

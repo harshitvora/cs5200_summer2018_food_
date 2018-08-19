@@ -60,4 +60,10 @@ public class UserService {
     public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
         return userDao.updateUser(id, newUser);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/api/user/restaurant/{restaurantId}")
+    public User registerManager(@PathVariable("restaurantId") int id, @RequestBody User newUser) {
+        return userDao.registerManager(newUser, id);
+    }
 }

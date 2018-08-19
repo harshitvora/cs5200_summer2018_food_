@@ -50,6 +50,13 @@ public class Menu {
         this.items = items;
     }
 
+    public void addItem(Item item){
+        this.getItems().add(item);
+        if(item.getMenu() != this){
+            item.setMenu(this);
+        }
+    }
+
     public void set(Menu newMenu){
         setName(newMenu.getName());
         setRestaurant(newMenu.getRestaurant());

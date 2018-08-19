@@ -1,7 +1,9 @@
 package edu.neu.cs5200.dao;
 
 import edu.neu.cs5200.entity.Menu;
+import edu.neu.cs5200.entity.Restaurant;
 import edu.neu.cs5200.repository.MenuRepository;
+import edu.neu.cs5200.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +16,19 @@ public class MenuDao {
     @Autowired
     MenuRepository menuRepository;
 
-    public Menu createMenu(Menu menu) {
-        return menuRepository.save(menu);
+    @Autowired
+    RestaurantRepository restaurantRepository;
+
+    public Menu createMenu(Menu menu, int restaurantId) {
+        Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+        if (restaurant.isPresent()){
+            Restaurant restaurantObject = restaurant.get();
+            menu.setRestaurant(restaurantObject);
+            restaurantObject.addMenu(menu);
+            restaurantRepository.save(restaurantObject);
+            return menuRepository.save(menu);
+        }
+        return null;
     }
 
     public Menu updateMenu(int id, Menu newMenu) {

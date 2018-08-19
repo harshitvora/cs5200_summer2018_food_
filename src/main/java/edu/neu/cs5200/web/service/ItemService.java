@@ -34,9 +34,9 @@ public class ItemService {
         return itemDao.findAllItemsByName(itemName);
     }
 
-    @PostMapping("/api/item")
-    public Item createItem(@RequestBody Item item) {
-        return itemDao.createItem(item);
+    @PostMapping("/api/item/menu/{menuId}")
+    public Item createItem(@RequestBody Item item, @PathVariable("menuId") int id) {
+        return itemDao.createItem(item, id);
     }
 
     @DeleteMapping("/api/item/{itemId}")

@@ -23,6 +23,8 @@ public class Restaurant {
     @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
+    @OneToOne
+    private User manager;
     private Integer avgCostForTwo;
     private Double aggregateRating;
     private Double latitude;
@@ -77,6 +79,14 @@ public class Restaurant {
         this.huskyOrders = huskyOrders;
     }
 
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
     public List<Menu> getMenus() {
         return menus;
     }
@@ -129,6 +139,13 @@ public class Restaurant {
         this.getReviews().add(review);
         if(review.getRestaurant() != this){
             review.setRestaurant(this);
+        }
+    }
+
+    public void addMenu(Menu menu){
+        this.getMenus().add(menu);
+        if(menu.getRestaurant() != this){
+            menu.setRestaurant(this);
         }
     }
 

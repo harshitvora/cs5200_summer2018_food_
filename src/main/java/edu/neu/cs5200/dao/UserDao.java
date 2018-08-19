@@ -1,6 +1,8 @@
 package edu.neu.cs5200.dao;
 
+import edu.neu.cs5200.entity.Restaurant;
 import edu.neu.cs5200.entity.User;
+import edu.neu.cs5200.repository.RestaurantRepository;
 import edu.neu.cs5200.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,9 @@ public class UserDao {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RestaurantRepository restaurantRepository;
 
     public User createUser(User user) {
         return userRepository.save(user);
@@ -51,5 +56,17 @@ public class UserDao {
     public Optional<User> findUserByCredentials(String email, String password) {
         return userRepository.findByCredentials(email, password);
 
+    }
+
+    public User registerManager(User newUser, int id) {
+        Optional<Restaurant> optional = restaurantRepository.findById(id);
+        if (optional.isPresent()) {
+            Restaurant restaurantObject = optional.get();
+            newUser.setRestaurant(restaurantObject);
+            restaurantObject.setManager(newUser);
+            restaurantRepository.save(restaurantObject);
+            return userRepository.save(newUser);
+        }
+        return null;
     }
 }

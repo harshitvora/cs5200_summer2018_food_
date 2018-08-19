@@ -33,6 +33,11 @@ public class RestaurantService {
         return restaurant;
     }
 
+    @GetMapping("/api/restaurant/manager/{managerId}")
+    public Optional<Restaurant> findRestaurantByManagerId(@PathVariable("managerId") int id) {
+        return restaurantDao.findRestaurantByManagerId(id);
+    }
+
     @PostMapping("/api/restaurant")
     public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
         return restaurantDao.createRestaurant(restaurant);
