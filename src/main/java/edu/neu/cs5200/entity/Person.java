@@ -19,6 +19,7 @@ public abstract class Person {
     private String password;
     @Column(unique = true)
     private String email;
+    private String pictureUrl;
 
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -31,6 +32,7 @@ public abstract class Person {
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<CreditCard> creditCards;
+
 
     public int getId() {
         return id;
@@ -70,6 +72,14 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
     public List<Phone> getPhones() {
