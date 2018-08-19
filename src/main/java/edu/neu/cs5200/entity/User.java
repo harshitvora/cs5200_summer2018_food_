@@ -15,8 +15,8 @@ public class User extends Person {
     private String preferredLocation;
     private String ccNumber;
     private String cvv;
-    private int expiryMM;
-    private int expiryYY;
+    private String expiryMM;
+    private String expiryYY;
 
     private String role;
 
@@ -78,19 +78,19 @@ public class User extends Person {
         this.cvv = cvv;
     }
 
-    public int getExpiryMM() {
+    public String getExpiryMM() {
         return expiryMM;
     }
 
-    public void setExpiryMM(int expiryMM) {
+    public void setExpiryMM(String expiryMM) {
         this.expiryMM = expiryMM;
     }
 
-    public int getExpiryYY() {
+    public String getExpiryYY() {
         return expiryYY;
     }
 
-    public void setExpiryYY(int expiryYY) {
+    public void setExpiryYY(String expiryYY) {
         this.expiryYY = expiryYY;
     }
 
