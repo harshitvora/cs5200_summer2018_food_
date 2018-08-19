@@ -9,8 +9,8 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String ccNumber;
-    private int expiryMM;
-    private int expiryDD;
+    private String expiryMM;
+    private String expiryDD;
     private String cvv;
     @ManyToOne
     private Person person;
@@ -31,19 +31,19 @@ public class CreditCard {
         this.ccNumber = ccNumber;
     }
 
-    public int getExpiryMM() {
+    public String getExpiryMM() {
         return expiryMM;
     }
 
-    public void setExpiryMM(int expiryMM) {
+    public void setExpiryMM(String expiryMM) {
         this.expiryMM = expiryMM;
     }
 
-    public int getExpiryDD() {
+    public String getExpiryDD() {
         return expiryDD;
     }
 
-    public void setExpiryDD(int expiryDD) {
+    public void setExpiryDD(String expiryDD) {
         this.expiryDD = expiryDD;
     }
 
