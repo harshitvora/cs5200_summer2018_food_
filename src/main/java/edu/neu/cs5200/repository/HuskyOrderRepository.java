@@ -1,11 +1,10 @@
 package edu.neu.cs5200.repository;
 
-import edu.neu.cs5200.entity.HuskyOrder;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Optional;
+import edu.neu.cs5200.entity.HuskyOrder;
 
 public interface HuskyOrderRepository extends CrudRepository<HuskyOrder, Integer> {
 

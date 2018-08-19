@@ -1,19 +1,19 @@
 package edu.neu.cs5200.dao;
 
-import edu.neu.cs5200.entity.Restaurant;
-import edu.neu.cs5200.repository.RestaurantRepository;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
+
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import edu.neu.cs5200.entity.Restaurant;
+import edu.neu.cs5200.repository.RestaurantRepository;
 
 @Component
 public class RestaurantDao {
