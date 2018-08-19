@@ -93,4 +93,8 @@ public class Address {
         setZip(newAddress.getZip());
         setPrimaryAddress(newAddress.isPrimaryAddress());
     }
+
+	public Address() {
+		super();
+	}
 }

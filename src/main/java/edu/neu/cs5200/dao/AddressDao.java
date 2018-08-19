@@ -1,21 +1,35 @@
 package edu.neu.cs5200.dao;
 
-import edu.neu.cs5200.entity.Address;
-import edu.neu.cs5200.repository.AddressRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
+import edu.neu.cs5200.entity.Address;
+import edu.neu.cs5200.entity.User;
+import edu.neu.cs5200.repository.AddressRepository;
+import edu.neu.cs5200.repository.UserRepository;
 
 @Component
 public class AddressDao {
 
     @Autowired
     AddressRepository addressRepository;
+    @Autowired
+    UserRepository userRepository;
 
-    public Address createAddress(Address address) {
-        return addressRepository.save(address);
+    public Address createAddress(Address address, int userId) {
+		Optional<User> optional = userRepository.findById(userId);
+        if (optional.isPresent()) {
+            User user = optional.get();
+            List<Address> addresses = user.getAddresses();
+            addresses.add(address);
+            user.setAddresses(addresses);
+            userRepository.save(user);
+            return addressRepository.save(address);
+        }
+    	return null;
     }
 
     public Address updateAddress(int id, Address newAddress) {

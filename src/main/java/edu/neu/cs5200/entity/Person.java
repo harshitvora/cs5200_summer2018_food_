@@ -1,11 +1,15 @@
 package edu.neu.cs5200.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Feature;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -23,10 +27,12 @@ public abstract class Person {
 
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonFormat(with = Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     private List<Phone> phones;
 
     @OneToMany(mappedBy = "person")
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonFormat(with = Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     private List<Address> addresses;
 
     @OneToMany(mappedBy = "person")
@@ -83,19 +89,35 @@ public abstract class Person {
     }
 
     public List<Phone> getPhones() {
+    	if(phones == null) {
+    		phones = new ArrayList<Phone>();
+		}
         return phones;
     }
 
     public void setPhones(List<Phone> phones) {
         this.phones = phones;
+        for(Phone phone: phones) {
+        	phone.getPhoneNumber();
+		}
     }
 
     public List<Address> getAddresses() {
+    	if(addresses == null) {
+    		addresses = new ArrayList<Address>();
+		}
         return addresses;
     }
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+        for(Address address: addresses) {
+        	address.getStreet1();
+        	address.getStreet2();
+        	address.getCity();
+        	address.getState();
+        	address.getZip();
+		}
     }
 
     public List<CreditCard> getCreditCards() {

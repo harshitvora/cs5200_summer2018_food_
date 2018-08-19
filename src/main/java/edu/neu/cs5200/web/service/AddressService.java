@@ -1,12 +1,19 @@
 package edu.neu.cs5200.web.service;
 
-import edu.neu.cs5200.dao.AddressDao;
-import edu.neu.cs5200.entity.Address;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.neu.cs5200.dao.AddressDao;
+import edu.neu.cs5200.entity.Address;
 
 @RestController
 public class AddressService {
@@ -28,10 +35,10 @@ public class AddressService {
     public List<Address> findAddresssByPersonId(@PathVariable("personId") int personId) {
         return addressDao.findAddressesByPersonId(personId);
     }
-
-    @PostMapping("/api/address")
-    public Address createAddress(@RequestBody Address address) {
-        return addressDao.createAddress(address);
+    
+    @PostMapping("/api/address/{personId}")
+    public Address createAddress(@RequestBody Address address, @PathVariable("personId") int personId) {
+        return addressDao.createAddress(address, personId);
     }
 
     @DeleteMapping("/api/address/{addressId}")

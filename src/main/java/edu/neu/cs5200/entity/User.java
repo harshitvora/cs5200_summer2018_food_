@@ -172,6 +172,8 @@ public class User extends Person {
         setLastName(newUser.getLastName());
         setPassword(newUser.getPassword());
         setEmail(newUser.getEmail());
+        setPhones(newUser.getPhones());
+        setAddresses(newUser.getAddresses());
         setPreferredLocation(newUser.getPreferredLocation());
         setCcNumber(newUser.getCcNumber());
         setCvv(newUser.getCvv());

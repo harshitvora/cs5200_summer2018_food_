@@ -52,4 +52,10 @@ public class Phone {
         setPhoneNumber(newPhone.getPhoneNumber());
         setPrimaryPhone(newPhone.isPrimaryPhone());
     }
+	
+	public Phone() {
+		super();
+	}
+    
+    
 }

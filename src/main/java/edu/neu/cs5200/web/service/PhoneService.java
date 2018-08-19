@@ -30,9 +30,9 @@ public class PhoneService {
         return phoneDao.findPhonesByPersonId(personId);
     }
 
-    @PostMapping("/api/phone")
-    public Phone createPhone(@RequestBody Phone phone) {
-        return phoneDao.createPhone(phone);
+    @PostMapping("/api/phone/{personId}")
+    public Phone createPhone(@RequestBody Phone phone, @PathVariable("personId") int personId) {
+        return phoneDao.createPhone(phone, personId);
     }
 
     @DeleteMapping("/api/phone/{phoneId}")
