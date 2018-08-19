@@ -3,6 +3,8 @@ package edu.neu.cs5200.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
 import java.util.List;
 
 @Entity
@@ -13,9 +15,13 @@ public class User extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String preferredLocation;
+    @Size(min = 16, max = 16)
     private String ccNumber;
+    @Size(min = 3, max = 3)
     private String cvv;
+    @Size(min = 2, max = 2)
     private String expiryMM;
+    @Size(min = 2, max = 2)
     private String expiryYY;
 
     private String role;
@@ -167,6 +173,10 @@ public class User extends Person {
         setPassword(newUser.getPassword());
         setEmail(newUser.getEmail());
         setPreferredLocation(newUser.getPreferredLocation());
+        setCcNumber(newUser.getCcNumber());
+        setCvv(newUser.getCvv());
+        setExpiryMM(newUser.getExpiryMM());
+        setExpiryYY(newUser.getExpiryYY());
         setReviews(newUser.getReviews());
         setHuskyOrders(newUser.getHuskyOrders());
     }

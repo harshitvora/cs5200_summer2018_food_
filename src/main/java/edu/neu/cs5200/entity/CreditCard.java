@@ -1,6 +1,7 @@
 package edu.neu.cs5200.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class CreditCard {
@@ -8,10 +9,14 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Size(min = 16, max = 16)
     private String ccNumber;
-    private String expiryMM;
-    private String expiryDD;
+    @Size(min = 3, max = 3)
     private String cvv;
+    @Size(min = 2, max = 2)
+    private String expiryMM;
+    @Size(min = 2, max = 2)
+    private String expiryYY;
     @ManyToOne
     private Person person;
 
@@ -39,12 +44,12 @@ public class CreditCard {
         this.expiryMM = expiryMM;
     }
 
-    public String getExpiryDD() {
-        return expiryDD;
+    public String getExpiryYY() {
+        return expiryYY;
     }
 
-    public void setExpiryDD(String expiryDD) {
-        this.expiryDD = expiryDD;
+    public void setExpiryYY(String expiryYY) {
+        this.expiryYY = expiryYY;
     }
 
     public String getCvv() {
@@ -65,7 +70,7 @@ public class CreditCard {
 
     public void set(CreditCard newCreditCard){
         setCcNumber(newCreditCard.getCcNumber());
-        setExpiryDD(newCreditCard.getExpiryDD());
+        setExpiryYY(newCreditCard.getExpiryYY());
         setExpiryMM(newCreditCard.getExpiryMM());
     }
 }
