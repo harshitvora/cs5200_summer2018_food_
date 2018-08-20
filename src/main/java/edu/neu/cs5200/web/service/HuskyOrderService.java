@@ -48,7 +48,7 @@ public class HuskyOrderService {
         return huskyOrderDao.findAvailableOrders();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @PutMapping("/api/order/husky/{huskyId}")
     public HuskyOrder acceptOrder(@RequestBody HuskyOrder huskyOrder, @PathVariable("huskyId") int huskyId) {
         return huskyOrderDao.acceptOrder(huskyOrder, huskyId);
@@ -64,13 +64,13 @@ public class HuskyOrderService {
         return huskyOrderDao.createNewOrder(items, restaurantId, userId);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @DeleteMapping("/api/order/{orderId}")
     public void deleteOrder(@PathVariable("orderId") int id) {
         huskyOrderDao.deleteOrder(id);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/order/{orderId}")
     public HuskyOrder updateOrder(@PathVariable("orderId") int id, @RequestBody HuskyOrder newHuskyOrder) {
         return huskyOrderDao.updateOrder(id, newHuskyOrder);

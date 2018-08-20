@@ -35,13 +35,13 @@ public class AddressService {
         return addressDao.createAddress(address, personId);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @DeleteMapping("/api/address/{addressId}")
     public void deleteAddress(@PathVariable("addressId") int id) {
         addressDao.deleteAddress(id);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/address/{addressId}")
     public Address updateAddress(@PathVariable("addressId") int id, @RequestBody Address newAddress) {
         return addressDao.updateAddress(id, newAddress);

@@ -54,31 +54,31 @@ public class UserService {
         return userDao.createUser(user);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @DeleteMapping("/api/user/{userId}")
     public void deleteUser(@PathVariable("userId") int id) {
         userDao.deleteUser(id);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/user/{userId}")
     public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser) {
         return userDao.updateUser(id, newUser);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/user/restaurant/{restaurantId}")
     public User registerManager(@PathVariable("restaurantId") int id, @RequestBody User newUser) {
         return userDao.registerManager(newUser, id);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @PutMapping("/api/user/{userId}/follow/{followId}")
     public User followUser(@PathVariable("userId") int id, @PathVariable("followId") int followId) {
         return userDao.followUser(id, followId);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     @DeleteMapping("/api/user/{userId}/follow/{followId}")
     public User unfollowUser(@PathVariable("userId") int id, @PathVariable("followId") int followId) {
         return userDao.unfollowUser(id, followId);

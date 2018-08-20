@@ -39,13 +39,13 @@ public class ItemService {
         return itemDao.createItem(item, id);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @DeleteMapping("/api/item/{itemId}")
     public void deleteItem(@PathVariable("itemid") int itemId) {
         itemDao.deleteItem(itemId);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/item/{itemId}")
     public Item updateItem(@PathVariable("itemId") int itemId, @RequestBody Item newItem) {
         return itemDao.updateItem(itemId, newItem);

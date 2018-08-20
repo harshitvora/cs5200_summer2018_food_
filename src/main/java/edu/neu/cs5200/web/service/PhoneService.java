@@ -35,13 +35,13 @@ public class PhoneService {
         return phoneDao.createPhone(phone, personId);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @DeleteMapping("/api/phone/{phoneId}")
     public void deletePhone(@PathVariable("phoneId") int id) {
         phoneDao.deletePhone(id);
     }
 
-    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
+    @CrossOrigin
     @PutMapping("/api/phone/{phoneId}")
     public Phone updatePhone(@PathVariable("phoneId") int id, @RequestBody Phone newPhone) {
         return phoneDao.updatePhone(id, newPhone);
