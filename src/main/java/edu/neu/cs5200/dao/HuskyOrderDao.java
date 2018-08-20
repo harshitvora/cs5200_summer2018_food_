@@ -41,6 +41,7 @@ public class HuskyOrderDao {
             for(Item item : items){
                 amount = amount + item.getPrice();
             }
+            order.setStatus("PENDING");
             order.setAmount(amount);
             return huskyOrderRepository.save(order);
         }
