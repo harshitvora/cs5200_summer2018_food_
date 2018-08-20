@@ -39,12 +39,13 @@ public class ReviewService {
         return reviewDao.createReview(review, customerId, restaurantId);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @DeleteMapping("/api/review/{reviewId}")
     public void deleteReview(@PathVariable("reviewId") int id) {
         reviewDao.deleteReview(id);
     }
 
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @PutMapping("/api/review/{reviewId}")
     public Review updateReview(@PathVariable("reviewId") int id, @RequestBody Review newReview) {
         return reviewDao.updateReview(id, newReview);
