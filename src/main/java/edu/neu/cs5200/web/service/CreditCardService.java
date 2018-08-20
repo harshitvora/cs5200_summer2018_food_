@@ -34,11 +34,13 @@ public class CreditCardService {
         return creditCardDao.createCreditCard(creditCard);
     }
 
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @DeleteMapping("/api/creditCard/{creditCardId}")
     public void deleteCreditCard(@PathVariable("creditCardId") int id) {
         creditCardDao.deleteCreditCard(id);
     }
 
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @PutMapping("/api/creditCard/{creditCardId}")
     public CreditCard updateCreditCard(@PathVariable("creditCardId") int id, @RequestBody CreditCard newCreditCard) {
         return creditCardDao.updateCreditCard(id, newCreditCard);

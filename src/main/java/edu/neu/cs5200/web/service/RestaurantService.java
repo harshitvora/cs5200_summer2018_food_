@@ -40,11 +40,13 @@ public class RestaurantService {
         return restaurantDao.createRestaurant(restaurant);
     }
 
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @DeleteMapping("/api/restaurant/{restaurantId}")
     public void deleteRestaurant(@PathVariable("restaurantId") int id) {
         restaurantDao.deleteRestaurant(id);
     }
 
+    @CrossOrigin(origins = "https://huskyeats.herokuapp.com/")
     @PutMapping("/api/restaurant/{restaurantId}")
     public Restaurant updateRestaurant(@PathVariable("restaurantId") int id, @RequestBody Restaurant newRestaurant) {
         return restaurantDao.updateRestaurant(id, newRestaurant);
